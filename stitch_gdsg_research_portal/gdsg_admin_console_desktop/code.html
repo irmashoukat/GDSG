@@ -1,0 +1,475 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>GDSG Lab - Research Console</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#b8efd0",
+                      "surface-container-high": "#e6e8ea",
+                      "secondary-container": "#fc5d4f",
+                      "on-tertiary": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "secondary": "#b32821",
+                      "outline-variant": "#c0c9c1",
+                      "on-tertiary-container": "#92a2bb",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "surface-variant": "#e0e3e5",
+                      "primary": "#002819",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "on-surface-variant": "#404943",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#eff1f3",
+                      "surface-dim": "#d8dadc",
+                      "on-primary-fixed": "#002114",
+                      "on-secondary-fixed-variant": "#910b0b",
+                      "surface-container": "#eceef0",
+                      "surface-tint": "#356850",
+                      "secondary-fixed": "#ffdad5",
+                      "on-primary-fixed-variant": "#1b503a",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-error": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "surface-container-low": "#f2f4f6",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#610003",
+                      "tertiary-fixed": "#d3e4fe",
+                      "on-surface": "#191c1e",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "inverse-primary": "#9cd2b5",
+                      "surface-bright": "#f7f9fb",
+                      "inverse-surface": "#2d3133",
+                      "background": "#f7f9fb",
+                      "outline": "#717973",
+                      "primary-fixed-dim": "#9cd2b5",
+                      "primary-container": "#06402b",
+                      "tertiary-container": "#29394d",
+                      "secondary-fixed-dim": "#ffb4aa",
+                      "on-secondary-fixed": "#410001",
+                      "on-background": "#191c1e",
+                      "tertiary": "#132337",
+                      "on-primary-container": "#77ac90"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "base": "8px",
+                      "md": "24px",
+                      "gutter": "24px",
+                      "margin-desktop": "64px",
+                      "xs": "4px",
+                      "xl": "80px",
+                      "lg": "48px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          }
+        }
+    </script>
+<style>
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(247, 249, 251, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        
+        /* Coordinate background */
+        body {
+            background-image: radial-gradient(var(--tw-colors-outline-variant) 1px, transparent 1px);
+            background-size: 40px 40px;
+            background-position: 0 0;
+            background-color: var(--tw-colors-background);
+            background-attachment: fixed;
+        }
+
+        /* Tonal layering shadow */
+        .shadow-tonal {
+            box-shadow: 0 4px 40px rgba(0, 40, 25, 0.04);
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased selection:bg-primary-container selection:text-on-primary font-body-md text-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 border-r border-outline-variant/20 bg-surface-container-low z-40">
+<!-- Header -->
+<div class="p-md flex flex-col gap-sm border-b border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/30">
+<img alt="GDSG Lab Director" class="w-full h-full object-cover" data-alt="A professional headshot of a female scientist in a modern, well-lit lab environment. High-key lighting, bright background. Subtle dark green and red accents in her attire or surroundings to match the UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDiVMXFEXs1WL3M_lxbUFUQOaDQuuIclKv7QshuGxCJ2-v9ouRi_oY1AbbDmJPKdfB4zSZ9XBs2rYGq7L2bLxF4HTI5BxmwmO8hsZ8eAwdPx6zm2FFpuLKfmwVzoUTYNVNOfm8c9EewSdQR8dg6TozzrPx5qlM62Z9GKM_gMFLyMrEpImiPhd10sHNMFBceAfLbYL25ppt-SCmfQnwZP7XF1oPD_kXlwUSmJ2jLZyeq-hwv29KXGOu9">
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface text-[18px] leading-tight font-semibold">Research Console</h2>
+<p class="font-label-mono text-label-mono text-on-surface-variant text-[11px] mt-1">Admin Access</p>
+</div>
+</div>
+</div>
+<!-- Navigation Links -->
+<nav class="flex-1 overflow-y-auto py-sm px-xs font-label-mono text-label-mono">
+<!-- Active Tab -->
+<a class="bg-primary text-on-primary rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 translate-x-1 duration-200 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                Dashboard
+            </a>
+<!-- Inactive Tabs -->
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">science</span>
+                Active Studies
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">memory</span>
+                Compute Nodes
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">database</span>
+                Datasets
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+                Grant Tracking
+            </a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<!-- CTA & Footer -->
+<div class="p-md border-t border-outline-variant/20 flex flex-col gap-sm">
+<button class="w-full bg-primary-container text-on-primary rounded-full py-2 px-4 font-label-mono text-label-mono hover:opacity-90 transition-opacity flex justify-center items-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                New Project
+            </button>
+<div class="mt-xs font-label-mono text-label-mono">
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg -mx-2 px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">help_center</span>
+                    Support
+                </a>
+<a class="text-on-surface-variant hover:bg-surface-variant/50 rounded-lg -mx-2 px-4 py-2 flex items-center gap-3 hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">logout</span>
+                    Sign Out
+                </a>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 ml-0 md:ml-64 p-margin-mobile md:p-margin-desktop min-h-screen">
+<!-- Header Section -->
+<header class="flex flex-col md:flex-row md:items-end justify-between mb-xl gap-md">
+<div>
+<h1 class="font-display-lg text-display-lg text-on-surface">Lab Overview</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">Real-time metrics and coordination for the Geospatial Data Science Group.</p>
+</div>
+<div class="flex items-center gap-sm">
+<div class="relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-outline">search</span>
+<input class="bg-surface-container w-64 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border-b border-outline-variant/50 font-label-mono text-label-mono placeholder:text-outline/70" placeholder="Search entity..." type="text">
+</div>
+</div>
+</header>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-xl">
+    <!-- Resource Utilization Line Chart -->
+    <div class="col-span-1 md:col-span-8 bg-surface rounded-xl p-md border border-outline-variant/30 shadow-tonal">
+        <div class="flex justify-between items-center mb-md">
+            <div>
+                <h3 class="font-headline-md text-[18px] font-semibold text-on-surface">Resource Utilization</h3>
+                <p class="text-[12px] text-on-surface-variant font-label-mono">Compute Node Alpha/Beta/Gamma (24h)</p>
+            </div>
+            <div class="flex gap-2">
+                <span class="flex items-center gap-1 text-[11px] font-label-mono text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-primary"></span> Active</span>
+                <span class="flex items-center gap-1 text-[11px] font-label-mono text-on-surface-variant"><span class="w-2 h-2 rounded-full bg-secondary"></span> Peak</span>
+            </div>
+        </div>
+        <div class="h-48 w-full flex items-end gap-1 px-2">
+            <!-- Simple CSS/SVG Line Chart Representation -->
+            <svg class="w-full h-full" viewBox="0 0 400 100" preserveAspectRatio="none">
+                <path d="M0,80 Q50,20 100,60 T200,30 T300,70 T400,10" fill="none" stroke="#002819" stroke-width="2"></path>
+                <path d="M0,90 Q50,40 100,80 T200,50 T300,90 T400,30" fill="none" stroke="#b32821" stroke-width="1" stroke-dasharray="4"></path>
+                <rect x="0" y="0" width="400" height="100" fill="url(#grid)"></rect>
+                <defs>
+                    <pattern id="grid" width="40" height="20" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 20" fill="none" stroke="#c0c9c1" stroke-width="0.5" opacity="0.2"></path>
+                    </pattern>
+                </defs>
+            </svg>
+        </div>
+    </div>
+
+    <!-- Grant Allocation Doughnut -->
+    <div class="col-span-1 md:col-span-4 bg-surface rounded-xl p-md border border-outline-variant/30 shadow-tonal flex flex-col">
+        <h3 class="font-headline-md text-[18px] font-semibold text-on-surface mb-md">Grant Allocation</h3>
+        <div class="flex-1 flex items-center justify-center relative">
+            <svg class="w-32 h-32 transform -rotate-90">
+                <circle cx="64" cy="64" r="50" stroke="#e0e3e5" stroke-width="12" fill="transparent"></circle>
+                <circle cx="64" cy="64" r="50" stroke="#002819" stroke-width="12" fill="transparent" stroke-dasharray="314" stroke-dashoffset="100"></circle>
+                <circle cx="64" cy="64" r="50" stroke="#b32821" stroke-width="12" fill="transparent" stroke-dasharray="314" stroke-dashoffset="280"></circle>
+            </svg>
+            <div class="absolute inset-0 flex flex-col items-center justify-center">
+                <span class="text-[18px] font-bold text-on-surface">$4.2M</span>
+                <span class="text-[10px] font-label-mono text-on-surface-variant">TOTAL</span>
+            </div>
+        </div>
+        <div class="mt-4 space-y-1">
+            <div class="flex justify-between text-[11px] font-label-mono">
+                <span class="text-on-surface-variant">NSF Geospatial</span>
+                <span class="text-primary font-bold">68%</span>
+            </div>
+            <div class="flex justify-between text-[11px] font-label-mono">
+                <span class="text-on-surface-variant">Private Sector</span>
+                <span class="text-secondary font-bold">12%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Publication Growth Bar Chart -->
+    <div class="col-span-1 md:col-span-12 bg-surface rounded-xl p-md border border-outline-variant/30 shadow-tonal">
+        <div class="flex justify-between items-center mb-md">
+            <h3 class="font-headline-md text-[18px] font-semibold text-on-surface">Publication Growth</h3>
+            <select class="bg-surface-container-low border-none text-[11px] font-label-mono rounded-lg py-1 px-2 focus:ring-0">
+                <option>Last 6 Months</option>
+                <option>Year to Date</option>
+            </select>
+        </div>
+        <div class="h-32 flex items-end justify-between gap-2 px-2">
+            <div class="flex-1 bg-primary/10 rounded-t h-[40%] relative group">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary text-on-primary text-[10px] px-1.5 py-0.5 rounded opacity-0 group-hover:opacity-100 transition-opacity">4</div>
+            </div>
+            <div class="flex-1 bg-primary/20 rounded-t h-[60%]"></div>
+            <div class="flex-1 bg-primary/40 rounded-t h-[30%]"></div>
+            <div class="flex-1 bg-primary/60 rounded-t h-[85%]"></div>
+            <div class="flex-1 bg-primary/80 rounded-t h-[55%]"></div>
+            <div class="flex-1 bg-primary rounded-t h-[100%]"></div>
+        </div>
+        <div class="flex justify-between mt-2 px-2 text-[10px] font-label-mono text-on-surface-variant">
+            <span class="">MAY</span><span class="">JUN</span><span class="">JUL</span><span class="">AUG</span><span class="">SEP</span><span class="">OCT</span>
+        </div>
+    </div>
+</section>
+<!-- Main Content Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Pending Publications (Left Col) -->
+<section class="lg:col-span-8 flex flex-col gap-md">
+<div class="flex justify-between items-center mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        Pending Publications
+                    </h2>
+<a class="font-label-mono text-label-mono text-primary-container hover:underline" href="#">View All Archive</a>
+</div>
+<!-- Paper Card 1 -->
+<article class="bg-surface border border-outline-variant/30 rounded-xl p-md shadow-tonal hover:shadow-md transition-shadow relative overflow-hidden group flex flex-col md:flex-row gap-md">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary transform origin-left scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-secondary border border-secondary/30 px-2 py-0.5 rounded-full bg-secondary/5">Under Review</span>
+<span class="font-label-mono text-[11px] text-on-surface-variant">Nature Geoscience</span>
+</div>
+<h3 class="font-headline-md text-[20px] leading-snug font-semibold text-on-surface mb-2">High-Resolution Mapping of Urban Heat Islands using AI</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-4 line-clamp-2">This study presents a novel machine learning approach to downscaling thermal satellite imagery, providing unprecedented detail for urban climate interventions.</p>
+<div class="flex items-center gap-4 font-label-mono text-[12px] text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">person</span>
+                                Chen et al.
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                Oct 24, 2024
+                            </div>
+</div>
+</div>
+<div class="flex md:flex-col justify-end gap-2 shrink-0 border-t md:border-t-0 md:border-l border-outline-variant/20 pt-4 md:pt-0 md:pl-4">
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded-full font-label-mono text-label-mono hover:opacity-90 transition-opacity whitespace-nowrap">Approve</button>
+<button class="bg-transparent border border-primary-container text-primary-container px-4 py-2 rounded-full font-label-mono text-label-mono hover:bg-surface-container transition-colors whitespace-nowrap">Review Comments</button>
+</div>
+</article>
+<!-- Paper Card 2 -->
+<article class="bg-surface border border-outline-variant/30 rounded-xl p-md shadow-tonal hover:shadow-md transition-shadow relative overflow-hidden group flex flex-col md:flex-row gap-md">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary transform origin-left scale-y-0 group-hover:scale-y-100 transition-transform duration-300"></div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="font-label-mono text-[10px] uppercase tracking-wider text-secondary border border-secondary/30 px-2 py-0.5 rounded-full bg-secondary/5">Under Review</span>
+<span class="font-label-mono text-[11px] text-on-surface-variant">IEEE TGRS</span>
+</div>
+<h3 class="font-headline-md text-[20px] leading-snug font-semibold text-on-surface mb-2">Topological Data Analysis for LiDAR Point Cloud Classification</h3>
+<p class="font-body-md text-sm text-on-surface-variant mb-4 line-clamp-2">We introduce a robust framework for classifying complex forest structures by leveraging persistent homology on high-density aerial LiDAR datasets.</p>
+<div class="flex items-center gap-4 font-label-mono text-[12px] text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">person</span>
+                                Ramirez &amp; Smith
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+                                Oct 21, 2024
+                            </div>
+</div>
+</div>
+<div class="flex md:flex-col justify-end gap-2 shrink-0 border-t md:border-t-0 md:border-l border-outline-variant/20 pt-4 md:pt-0 md:pl-4">
+<button class="bg-primary-container text-on-primary px-4 py-2 rounded-full font-label-mono text-label-mono hover:opacity-90 transition-opacity whitespace-nowrap">Approve</button>
+<button class="bg-transparent border border-primary-container text-primary-container px-4 py-2 rounded-full font-label-mono text-label-mono hover:bg-surface-container transition-colors whitespace-nowrap">Review Comments</button>
+</div>
+</article>
+</section>
+<!-- Recent Messages (Right Col) -->
+<aside class="lg:col-span-4 flex flex-col gap-sm">
+<div class="flex justify-between items-center mb-2">
+<h2 class="font-headline-md text-[20px] font-semibold text-on-surface">Coordination Feed</h2>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary-container">more_horiz</button>
+</div>
+<div class="bg-surface/80 backdrop-blur-md border border-outline-variant/30 rounded-xl p-0 shadow-tonal overflow-hidden flex flex-col h-[500px]">
+<!-- Feed Content -->
+<div class="flex-1 overflow-y-auto p-md flex flex-col gap-4">
+<!-- Message Item -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-outline-variant/30">
+<img alt="Dr. Albers" class="w-full h-full object-cover" data-alt="A clean, minimalist abstract geometric avatar with sharp edges, using deep green and pale mint colors on a light background. High-tech academic feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuARzge-ai56v6A40FfsyiR_i-UCvalt4cAdpRKqp9WSdae7WsPlXJIR4NEZDDLwcjRAT-n4tdi3z1DBMKciz02WsZ7f1j2waelA3SmuK-PbpIPxq2USRJ37jj3ju4j2y4h60XcyMMurmSLCvQUTUvkwdc4gYi8bTEj2SmC7lQLibOjpMUF5L3cb1R2LQIBNTRLREcgPi8he_sR0LmvF8Y9J0CdlTSstyzCRVbvplQcfrJne1HIqZcf7">
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-headline-md text-[14px] font-bold text-on-surface">Dr. Albers</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant">10:42 AM</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-sm font-body-md text-on-surface border border-outline-variant/10">
+                                    Compute Node Alpha is undergoing maintenance at 14:00. Please save workloads.
+                                </div>
+</div>
+</div>
+<!-- Message Item -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-outline-variant/30">
+<img alt="Grant Office" class="w-full h-full object-cover" data-alt="A clean, minimalist abstract geometric avatar with soft curves, using warm gray and subtle red accents on a white background. High-tech academic feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCz_hsA_XeE9qpzTV6je-_Rp1ziMftseDZd2nfgu1czWpACK4ql07NcbSWH1hXQMLxsNfRdn-f6cmAdR0LPjt4gzkj9Sswn3_y1KFiThzQwR-xe1aUM-H2_XUTZ-YDLjoN1qNcHOOsFAjUUy10nz6IRTvyQPei49k6dnreuVMcmPfLFqY896JPzufTwCWUTmBx-5aUrfN_LaGahIOcgFqq_OEQ7wufE8T9JXPdG8KjTRsxVxBuNZGik">
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-headline-md text-[14px] font-bold text-on-surface">Grant Office</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant">Yesterday</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-sm font-body-md text-on-surface border border-outline-variant/10">
+<span class="inline-flex items-center gap-1 text-secondary font-semibold mb-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> Action Required
+                                    </span><br>
+                                    NSF report for project GEO-892 is due next Friday.
+                                </div>
+</div>
+</div>
+<!-- Message Item -->
+<div class="flex gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden shrink-0 border border-outline-variant/30">
+<img alt="J. Doe" class="w-full h-full object-cover" data-alt="A modern professional portrait of a male graduate student in a high-tech lab setting. Clean, minimalist lighting. Focused expression." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApDEPYCx0-dxtueE7u2A_dl-k-lBH9yALmcVf2GiWNBez3Y81eTydoltoH2dl419Q4Gmd1Lo4LTavc7-UwuQJGbrUgrnJf1NtOyDN9hTz7b-DyOL1eJEStQfwMSYWBzOtcM-440TFYgkFEl-OD96p3sdW-8oXstZ0FA_62KyJXcR7P_tu39FmXQsVDLcl_TrW3S-nEj5mJTH7x4HTVki4eSb8eZAbZ-yVh97XKfCJ7LXe3QKI0Hy-I">
+</div>
+<div>
+<div class="flex items-baseline gap-2 mb-1">
+<span class="font-headline-md text-[14px] font-bold text-on-surface">J. Doe (Phd Cand)</span>
+<span class="font-label-mono text-[10px] text-on-surface-variant">Mon</span>
+</div>
+<div class="bg-surface-container-low p-3 rounded-tr-lg rounded-br-lg rounded-bl-lg text-sm font-body-md text-on-surface border border-outline-variant/10">
+                                    I've uploaded the new raster datasets to the shared drive. Access via <span class="font-label-mono text-[11px] text-primary-container bg-primary-fixed/20 px-1 rounded">/data/geo/2024/q4</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-3 border-t border-outline-variant/20 bg-surface-container-lowest">
+<div class="relative">
+<input class="w-full bg-surface-container rounded-full py-2 pl-4 pr-10 text-sm focus:outline-none focus:ring-2 focus:ring-primary-container border-b border-outline-variant/50 font-body-md" placeholder="Type a message..." type="text">
+<button class="absolute right-2 top-1/2 -translate-y-1/2 material-symbols-outlined text-primary-container hover:text-primary transition-colors">send</button>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+
+
+</body></html>

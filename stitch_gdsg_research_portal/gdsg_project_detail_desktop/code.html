@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Urban Heat Island Mitigation Modeling - Geospatial Data Science Group</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from system prompt -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#b8efd0",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary-container": "#fc5d4f",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "secondary": "#b32821",
+                    "outline-variant": "#c0c9c1",
+                    "on-tertiary-container": "#92a2bb",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "primary": "#002819",
+                    "on-tertiary-fixed-variant": "#38485d",
+                    "on-surface-variant": "#404943",
+                    "tertiary-fixed-dim": "#b7c8e1",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-fixed": "#002114",
+                    "on-secondary-fixed-variant": "#910b0b",
+                    "surface-container": "#eceef0",
+                    "surface-tint": "#356850",
+                    "secondary-fixed": "#ffdad5",
+                    "on-primary-fixed-variant": "#1b503a",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#610003",
+                    "tertiary-fixed": "#d3e4fe",
+                    "on-surface": "#191c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#0b1c30",
+                    "inverse-primary": "#9cd2b5",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-surface": "#2d3133",
+                    "background": "#f7f9fb",
+                    "outline": "#717973",
+                    "primary-fixed-dim": "#9cd2b5",
+                    "primary-container": "#06402b",
+                    "tertiary-container": "#29394d",
+                    "secondary-fixed-dim": "#ffb4aa",
+                    "on-secondary-fixed": "#410001",
+                    "on-background": "#191c1e",
+                    "tertiary": "#132337",
+                    "on-primary-container": "#77ac90"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "base": "8px",
+                    "md": "24px",
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "xs": "4px",
+                    "xl": "80px",
+                    "lg": "48px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "label-mono": [
+                            "JetBrains Mono"
+                    ],
+                    "display-lg": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "headline-md": [
+                            "Hanken Grotesk"
+                    ],
+                    "headline-lg-mobile": [
+                            "Hanken Grotesk"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "headline-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "label-mono": [
+                            "13px",
+                            {
+                                    "lineHeight": "1.0",
+                                    "letterSpacing": "0.05em",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "display-lg": [
+                            "64px",
+                            {
+                                    "lineHeight": "1.1",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-lg": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg-mobile": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "body-md": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ]
+            }
+        },
+        },
+      }
+    </script>
+<style>
+        /* Minimal custom CSS to supplement Tailwind */
+        .glass-panel {
+            background: rgba(247, 249, 251, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 201, 193, 0.3);
+        }
+        
+        .coord-bg {
+            background-image: radial-gradient(rgba(113, 121, 115, 0.15) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .hover-reveal-accent {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .hover-reveal-accent::before {
+            content: '';
+            position: absolute;
+            left: -1px;
+            top: 10%;
+            height: 80%;
+            width: 3px;
+            background-color: transparent;
+            transition: background-color 0.3s ease;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .hover-reveal-accent:hover::before {
+            background-color: #b32821; /* Secondary color */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface antialiased coord-bg bg-fixed">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm flex justify-between items-center px-margin-desktop h-20 mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">
+            GDSG
+        </div>
+<div class="hidden md:flex space-x-md">
+<!-- Active: Research -->
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary font-headline-md text-headline-md hover:text-secondary transition-colors duration-200" href="#">
+                Research
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary font-headline-md text-headline-md hover:text-secondary transition-colors duration-200" href="#">
+                Publications
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary font-headline-md text-headline-md hover:text-secondary transition-colors duration-200" href="#">
+                Team
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary font-headline-md text-headline-md hover:text-secondary transition-colors duration-200" href="#">
+                Data
+            </a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary font-headline-md text-headline-md hover:text-secondary transition-colors duration-200" href="#">
+                Contact
+            </a>
+</div>
+<button class="bg-primary text-on-primary rounded-full px-md py-sm font-label-mono text-label-mono hover:opacity-90 scale-95 active:opacity-80 transition-transform hidden md:block">
+            Join Lab
+        </button>
+<!-- Mobile Menu Icon (Placeholder) -->
+<div class="md:hidden text-primary">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-32 pb-xl px-margin-mobile md:px-margin-desktop max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter relative">
+<!-- Hero Section (Spans full width of container) -->
+<section class="col-span-1 lg:col-span-12 mb-xl relative rounded-xl overflow-hidden shadow-[0_4px_40px_rgba(0,40,25,0.04)] glass-panel border border-outline-variant/30 group">
+<!-- Hero Image / Visualization Placeholder -->
+<div class="h-[500px] w-full relative">
+<img class="w-full h-full object-cover rounded-t-xl mix-blend-multiply opacity-90 transition-transform duration-700 group-hover:scale-105" data-alt="A highly detailed, high-resolution thermal heatmap visualization of a dense modern city from a top-down satellite perspective. The visualization uses a vivid spectrum of deep blues, intense purples, and striking crimson reds to represent temperature gradients. The image is clean, high-tech, and scientific, set against a minimalist dark grid background. The lighting highlights the thermal 'hotspots' in the urban core, projecting an authoritative, academic, geospatial data science aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGPFseeh8MdCCewgexigbOBCg1JTKNPk1c6hiDHM-up5sgB1-UXWZZpT5IWELwLGjz37x58D1Oc8qiNNam_SGifmFuQ65sQUXjwf8E9xEUgMEDEvTMio4K46BcwqtrnfX1dSjK-kgGnk94tXG-OANY7hmf6hE7WlMGoC7BYnwzh3WnoUpLhhUsF89nDR_F48aVYlc8nVPcgCMZM4NYJ9LvxGDvn-p8pb2p4UwEio7235SIQEQYNxfy"/>
+<!-- Overlay Gradient for Text Legibility -->
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-transparent"></div>
+<!-- Hero Text Content -->
+<div class="absolute bottom-0 left-0 p-lg w-full md:w-2/3">
+<div class="inline-block px-3 py-1 mb-sm bg-primary/10 text-primary font-label-mono text-label-mono rounded-full border border-primary/20 backdrop-blur-sm">
+                         Active Research Project
+                     </div>
+<h1 class="font-display-lg text-display-lg text-primary mb-md leading-tight tracking-tight">
+                         Urban Heat Island Mitigation Modeling
+                     </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-3xl">
+                         Deploying high-resolution sensor networks and predictive AI to map thermal disparities and optimize localized cooling interventions in high-density metropolitan areas.
+                     </p>
+</div>
+</div>
+</section>
+<!-- Main Content Column -->
+<div class="col-span-1 lg:col-span-8 space-y-xl">
+<!-- Project Overview -->
+<section class="glass-panel p-lg rounded-xl hover-reveal-accent shadow-[0_4px_40px_rgba(0,40,25,0.04)]">
+<h2 class="font-headline-lg md:font-headline-lg text-headline-lg md:text-headline-lg text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">insights</span>
+                     Project Overview
+                </h2>
+<div class="prose max-w-none font-body-lg text-body-lg text-on-surface-variant space-y-4">
+<p>
+                        The Urban Heat Island (UHI) effect presents one of the most critical challenges to public health and urban sustainability in the 21st century. This project seeks to move beyond macro-level satellite thermal imaging by establishing a hyper-local, multi-modal data infrastructure capable of modeling microclimate dynamics at the street level.
+                    </p>
+<p>
+                        Our primary objective is to develop a predictive framework that not only identifies high-risk thermal zones but also simulates the impact of specific mitigation strategies—such as increased canopy cover, high-albedo surfaces, and optimized wind corridors. By integrating real-time sensor telemetry with historical meteorological datasets, we aim to provide urban planners with actionable, granular insights.
+                    </p>
+</div>
+</section>
+<!-- Methodology -->
+<section class="glass-panel p-lg rounded-xl hover-reveal-accent shadow-[0_4px_40px_rgba(0,40,25,0.04)]">
+<h2 class="font-headline-lg md:font-headline-lg text-headline-lg md:text-headline-lg text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">architecture</span>
+                     Methodology
+                </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mt-md">
+<!-- Method Card 1 -->
+<div class="bg-surface-container-lowest p-md rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-sm mb-sm text-primary">
+<span class="material-symbols-outlined">network_node</span>
+<h3 class="font-headline-md text-headline-md">Sensor Deployment</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">
+                            Deployment of 500+ low-cost IoT environmental nodes across stratified urban typologies. Nodes capture temperature, humidity, and particulate matter at 5-minute intervals.
+                        </p>
+<div class="font-label-mono text-label-mono text-secondary mt-auto">Hardware: LoRaWAN, DHT22</div>
+</div>
+<!-- Method Card 2 -->
+<div class="bg-surface-container-lowest p-md rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-sm mb-sm text-primary">
+<span class="material-symbols-outlined">memory</span>
+<h3 class="font-headline-md text-headline-md">Predictive Modeling</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-sm">
+                            Implementation of Spatiotemporal Graph Convolutional Networks (STGCN) to forecast thermal anomalies up to 72 hours in advance, incorporating structural urban morphology data.
+                        </p>
+<div class="font-label-mono text-label-mono text-secondary mt-auto">Framework: PyTorch Geo</div>
+</div>
+</div>
+</section>
+<!-- Datasets -->
+<section class="glass-panel p-lg rounded-xl hover-reveal-accent shadow-[0_4px_40px_rgba(0,40,25,0.04)]">
+<h2 class="font-headline-lg md:font-headline-lg text-headline-lg md:text-headline-lg text-primary mb-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">database</span>
+                     Datasets
+                </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">
+                    We maintain an open-science policy. Core anonymized datasets are available via the Institutional Repository.
+                </p>
+<div class="space-y-sm">
+<!-- Dataset Row -->
+<div class="flex items-center justify-between p-sm border-b border-outline-variant/20 hover:bg-surface-container/50 transition-colors rounded-sm group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="p-xs bg-primary-container/10 rounded text-primary-container">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] text-primary">Landsat 8 Thermal Band Repository</h4>
+<div class="font-label-mono text-[11px] text-on-surface-variant mt-1">Spatially corrected, 30m resolution (2015-2023)</div>
+</div>
+</div>
+<button class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-secondary/10">
+<span class="material-symbols-outlined">download</span>
+</button>
+</div>
+<!-- Dataset Row -->
+<div class="flex items-center justify-between p-sm border-b border-outline-variant/20 hover:bg-surface-container/50 transition-colors rounded-sm group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="p-xs bg-primary-container/10 rounded text-primary-container">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] text-primary">Microclimate Sensor Telemetry V2</h4>
+<div class="font-label-mono text-[11px] text-on-surface-variant mt-1">Proprietary ground-truth network, 5-min intervals</div>
+</div>
+</div>
+<button class="text-secondary opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-full hover:bg-secondary/10">
+<span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Side Panel / Project Stats -->
+<aside class="col-span-1 lg:col-span-4 space-y-md">
+<!-- Key Metrics Bento Box -->
+<div class="glass-panel p-md rounded-xl shadow-[0_4px_40px_rgba(0,40,25,0.04)]">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-md border-b border-outline-variant/30 pb-xs">Project Metadata</h3>
+<div class="grid grid-cols-2 gap-md">
+<div>
+<div class="font-label-mono text-[11px] text-on-surface-variant mb-1">Status</div>
+<div class="font-headline-md text-[20px] text-primary flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+                            Active
+                        </div>
+</div>
+<div>
+<div class="font-label-mono text-[11px] text-on-surface-variant mb-1">Duration</div>
+<div class="font-headline-md text-[20px] text-primary">2023 - 2026</div>
+</div>
+<div class="col-span-2">
+<div class="font-label-mono text-[11px] text-on-surface-variant mb-1">Funding Agency</div>
+<div class="font-headline-md text-[20px] text-primary flex items-center justify-between">
+                            National Science Foundation
+                             <span class="material-symbols-outlined text-secondary/70">account_balance</span>
+</div>
+<div class="text-[12px] text-on-surface-variant mt-1">Grant #GEO-2309481</div>
+</div>
+<div class="col-span-2 pt-xs border-t border-outline-variant/20">
+<div class="font-label-mono text-[11px] text-on-surface-variant mb-1">Impact</div>
+<div class="font-headline-md text-[24px] text-primary flex items-baseline gap-2">
+                            124 <span class="font-body-md text-body-md text-on-surface-variant">Citations</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Research Team -->
+<div class="glass-panel p-md rounded-xl shadow-[0_4px_40px_rgba(0,40,25,0.04)]">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-md border-b border-outline-variant/30 pb-xs">Principal Investigators</h3>
+<div class="space-y-sm">
+<!-- Team Member -->
+<div class="flex items-center gap-md group cursor-pointer p-2 rounded-lg hover:bg-surface-container/50 transition-colors">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-surface shadow-sm group-hover:border-primary-fixed transition-colors" data-alt="A professional headshot of an academic researcher. The portrait is high-quality, evenly lit with bright, soft white studio lighting fitting a high-tech academic environment. The background is a minimalist, very light grey texture. The researcher exudes competence and rigorous scientific authority, dressed in smart-casual modern attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALsBlmx-VQRar74rttTHjUFqilX8LLcBzlz18gxrlBzmKqdYuXDRLqpm7JgozVGzJbaap55pmVMXOCSQiGp2iD5xxPEK-ZBhJftEppjggbONYYfOiU6PUQ7Z7iMjgsRJp7XJyYswSqjiUjvRgNKNOvUoAK7u6etDlDyv78-wZCmAGJwIt5GSWMA0k-7MGp5B7k3n_ZaxTOnl_KAl-S5LOiI1Wp7l8dqSKjWHGTOijxC-jwK-XZ9oXQ"/>
+<div>
+<h4 class="font-headline-md text-[16px] text-primary group-hover:text-secondary transition-colors">Dr. Elena Rostova</h4>
+<div class="font-label-mono text-[11px] text-secondary">Urban Climatology</div>
+</div>
+</div>
+<!-- Team Member -->
+<div class="flex items-center gap-md group cursor-pointer p-2 rounded-lg hover:bg-surface-container/50 transition-colors">
+<img class="w-12 h-12 rounded-full object-cover border-2 border-surface shadow-sm group-hover:border-primary-fixed transition-colors" data-alt="A professional headshot of an academic researcher, male, wearing glasses. The portrait is high-quality, evenly lit with bright, soft white studio lighting fitting a high-tech academic environment. The background is a minimalist, very light grey texture. He appears analytical and authoritative, dressed in a sharp dark shirt." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiX815eNonbngNEwyiwTcvCGty5mLWqxpSSvgkBquWXIFPlqu7FY9_HVitwgQK4PKOAuaQ7omRNqyMr2210nEKMFWFeBJ0u8m1F4angYlihl_AsKwjquMBT7OQspG9bh5mXCQLfTiXv-MPdp56hgp18ELleSMDr4mF0HVHZAXtiT9RQdPLmAbsRUFt0PxRHHI_csnW6G0Sd8hkPuFPqnEcZ5Lk6A0qecVqFTy_CHGOWxu8dwOQ0ksZ"/>
+<div>
+<h4 class="font-headline-md text-[16px] text-primary group-hover:text-secondary transition-colors">Dr. Marcus Chen</h4>
+<div class="font-label-mono text-[11px] text-secondary">Machine Learning Systems</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Recent Publications -->
+<div class="glass-panel p-md rounded-xl shadow-[0_4px_40px_rgba(0,40,25,0.04)]">
+<h3 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-md border-b border-outline-variant/30 pb-xs">Selected Publications</h3>
+<ul class="space-y-md">
+<li class="group cursor-pointer">
+<a class="block" href="#">
+<h4 class="font-headline-md text-[16px] text-primary leading-snug group-hover:text-secondary transition-colors decoration-secondary underline-offset-4 group-hover:underline">
+                                 High-Resolution Spatiotemporal Forecasting of Urban Microclimates using STGCNs
+                             </h4>
+<div class="font-label-mono text-[10px] text-on-surface-variant mt-1 mt-2 flex flex-wrap gap-x-2 gap-y-1">
+<span class="text-primary-container bg-primary-container/10 px-1.5 py-0.5 rounded">Nature Urban Sustainability</span>
+<span>2024</span>
+</div>
+</a>
+</li>
+<li class="group cursor-pointer">
+<a class="block" href="#">
+<h4 class="font-headline-md text-[16px] text-primary leading-snug group-hover:text-secondary transition-colors decoration-secondary underline-offset-4 group-hover:underline">
+                                 Evaluating Albedo Modifications on Street-Level Thermal Comfort Indexes
+                             </h4>
+<div class="font-label-mono text-[10px] text-on-surface-variant mt-1 mt-2 flex flex-wrap gap-x-2 gap-y-1">
+<span class="text-primary-container bg-primary-container/10 px-1.5 py-0.5 rounded">Journal of Climate Informatics</span>
+<span>2023</span>
+</div>
+</a>
+</li>
+</ul>
+</div>
+</aside>
+</main>
+<!-- Footer Component -->
+<footer class="w-full py-xl mt-auto bg-primary dark:bg-on-primary-fixed border-t border-primary-container grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<div class="font-headline-lg text-headline-lg text-on-primary mb-md">
+                GDSG
+            </div>
+<p class="font-body-md text-body-md text-on-primary-container text-sm">
+                © 2024 Geospatial Data Science Group. All rights reserved.
+            </p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-lg justify-start md:justify-end items-end">
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Ethics &amp; Privacy</a>
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Institutional Repository</a>
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Open Science Policy</a>
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Lab Wiki</a>
+</div>
+</footer>
+</body></html>

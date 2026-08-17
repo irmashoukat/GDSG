@@ -1,0 +1,472 @@
+/* Admin Dashboard — Clean, compact, consistent styles */
+
+/* ==========================================================================
+   Design tokens
+   ========================================================================== */
+:root{
+  --sidebar-width: 220px;
+  --accent: #6366f1;
+  --muted: #6b7280;
+  --card-bg: #ffffff;
+  --card-border: #e6e9ef;
+
+  /* spacing scale (new — keeps rhythm consistent across the file) */
+  --space-1: .25rem;
+  --space-2: .5rem;
+  --space-3: .75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+
+  --radius-sm: .5rem;
+  --radius-md: .75rem;
+  --radius-lg: 1rem;
+
+  --shadow-card: 0 6px 18px rgba(15,23,42,0.04);
+  --shadow-card-hover: 0 10px 28px rgba(15,23,42,0.09);
+}
+
+/* ==========================================================================
+   Body background override
+   ========================================================================== */
+/* main.css sets body { background-color: var(--color-primary) } (blue) for
+   the public site, normally hidden under body.site-shell's ::before/::after
+   overlay. Admin pages don't carry that class, so the blue shows through
+   everywhere there's no card. This file only loads on admin pages, so it's
+   safe to force it back to a neutral surface here. */
+body{
+  background-color: #f8fafc !important;
+}
+
+/* ==========================================================================
+   Layout shell
+   ========================================================================== */
+/* NOTE: markup uses Bootstrap's own grid (.row > nav.col-md-3 + main.col-md-9).
+   We do NOT redeclare display:flex / flex-basis here — that would compete
+   with Bootstrap's calc()-based column widths and cause wrapping/overlap.
+   We only style within the columns Bootstrap already lays out. */
+
+main.col-md-9, main.col-xl-10{
+  padding: var(--space-5) var(--space-6);
+  min-height: calc(100vh - 56px);
+}
+
+/* Fix: ensure admin-layout row places sidebar and main side-by-side on desktop
+   This prevents the sidebar from visually overlaying the main content. */
+@media (min-width: 992px) {
+  .container-fluid.admin-layout > .row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+  }
+  .container-fluid.admin-layout > .row > nav.admin-sidebar {
+    flex: 0 0 var(--sidebar-width);
+    max-width: var(--sidebar-width);
+  }
+  .container-fluid.admin-layout > .row > main {
+    flex: 1 1 auto;
+    min-width: 0; /* allow proper content shrinking */
+  }
+  /* Override Bootstrap .bg-white when applied to admin-sidebar */
+  .container-fluid.admin-layout > .row > nav.admin-sidebar.bg-white {
+    background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(31,41,55,0.98));
+  }
+}
+
+/* ==========================================================================
+   Sidebar
+   ========================================================================== */
+.admin-sidebar{
+  min-height: 100vh;
+  padding: var(--space-5);
+  background: linear-gradient(180deg, rgba(15,23,42,0.98), rgba(31,41,55,0.98));
+  border-right: 1px solid rgba(226,232,240,0.06);
+  color: #e6eef8;
+  position: sticky;
+  top: 56px;
+  align-self: flex-start; /* keeps sticky pinned to its own height, not stretched by Bootstrap row's default align-items:stretch */
+  overflow: auto;
+}
+
+.admin-sidebar h6{
+  color: #e6eef8;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: var(--space-3);
+  opacity: .7;
+}
+
+.admin-sidebar .nav{
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.admin-sidebar .nav-link{
+  color: rgba(230,238,248,0.9) !important;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: .55rem .75rem;
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: .95rem;
+  transition: background .15s ease, color .15s ease, transform .15s ease;
+}
+
+.admin-sidebar .nav-link:hover{
+  background: rgba(99,102,241,0.08);
+  color: #fff !important;
+  transform: translateX(2px);
+}
+
+.admin-sidebar .nav-link.active{
+  background: linear-gradient(90deg,var(--accent),#a855f7);
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(99,102,241,0.12);
+}
+
+/* ==========================================================================
+   Top navbar
+   ========================================================================== */
+.navbar{
+  padding: var(--space-2) var(--space-4);
+  background: #fff;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.navbar .navbar-brand{
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   Dashboard section + grid
+   ========================================================================== */
+.admin-dashboard-section{
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+.admin-dashboard-section .container{ max-width: 1100px; }
+
+.admin-dashboard-section h1{
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+}
+
+.admin-dashboard-section > .container > p,
+.admin-dashboard-section .dashboard-intro{
+  color: var(--muted);
+  margin-bottom: var(--space-5);
+}
+
+/* Replaces the Bootstrap row/col grid with an explicit CSS grid so card
+   sizing stays consistent regardless of content length. If you keep the
+   Bootstrap .row/.col-md-4 markup this still works — it simply overrides
+   the flex gutters with a grid gap. */
+.dashboard-grid,
+.admin-dashboard-section .row{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.dashboard-grid > *,
+.admin-dashboard-section .row > [class*="col-"]{
+  width: auto; /* neutralize Bootstrap col width so grid controls sizing */
+  max-width: none;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Dashboard cards
+   ========================================================================== */
+.dashboard-card{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-card);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow .18s ease, transform .18s ease;
+}
+
+.dashboard-card:hover{
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.dashboard-card-header{
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.dashboard-card-icon{
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(99,102,241,0.1);
+  color: var(--accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.dashboard-card h5{
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.dashboard-card p{
+  color: var(--muted);
+  font-size: .875rem;
+  line-height: 1.5;
+  margin: 0 0 var(--space-4);
+  flex: 1 1 auto; /* pushes the action row to the bottom for equal-height cards */
+}
+
+/* ==========================================================================
+   Action buttons
+   ========================================================================== */
+.btn-group-dashboard{
+  display: flex;
+  gap: var(--space-2);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--card-border);
+}
+
+.btn-group-dashboard .btn{
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .45rem .7rem;
+  font-size: .8rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  line-height: 1;
+  transition: filter .15s ease, transform .15s ease;
+}
+
+.btn-group-dashboard .btn:hover{
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+.btn-group-dashboard .btn i{
+  font-style: normal;
+  font-size: .85rem;
+  line-height: 1;
+}
+
+/* Color variants — unchanged */
+.btn-add{ background: linear-gradient(90deg,#10b981,#059669); border: none; }
+.btn-edit{ background: linear-gradient(90deg,#3b82f6,#2563eb); border: none; }
+.btn-delete{ background: linear-gradient(90deg,#ef4444,#dc2626); border: none; }
+.btn-archive{ background: linear-gradient(90deg,#8b5cf6,#7c3aed); border: none; }
+
+/* ==========================================================================
+   Tables
+   ========================================================================== */
+.table{
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.table td, .table th{
+  padding: .6rem .75rem;
+  vertical-align: middle;
+}
+
+.table thead th{
+  font-weight: 700;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+  color: var(--muted);
+  background: #f9fafb;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.table tbody tr:hover{ background: #f9fafb; }
+
+/* Partner list improvements: ensure long descriptions wrap and don't push table horizontally */
+.table {
+  table-layout: fixed; /* respect column widths and prevent horizontal growth */
+}
+.table th.col-description, .table td.col-description{ 
+  width: 45%;
+  max-width: 45%;
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+.table th.col-actions, .table td.col-actions{ width: 160px; }
+.table td img{ max-width: 120px; height: auto; display: block; }
+.partner-desc-preview{ color: #0f172a; font-size: .95rem; line-height:1.4; max-height:6.6rem; overflow:hidden; }
+.partner-desc-preview br{ display:block; }
+
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+.admin-form{
+  max-width: 900px;
+  margin-top: var(--space-3);
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+}
+
+.admin-form .form-group{ margin-bottom: var(--space-4); }
+
+.admin-form label{
+  font-weight: 600;
+  font-size: .875rem;
+  margin-bottom: var(--space-1);
+  display: block;
+  color: #0f172a;
+}
+
+.admin-form .form-control{
+  padding: .55rem .7rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--card-border);
+  width: 100%;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+.admin-form .form-control:focus{
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.12);
+}
+
+.admin-form textarea.form-control{ min-height: 100px; }
+
+.admin-form .form-actions{
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--card-border);
+  display: flex;
+  gap: var(--space-2);
+}
+
+/* Ensure forms inside cards also adopt compact styling when not yet using .admin-form */
+.card form {
+  max-width: 900px;
+  margin: 0;
+}
+.card form .mb-3, .card form .form-group{ margin-bottom: var(--space-3); }
+.card form .form-label, .card form label{ display:block; font-weight:600; margin-bottom:var(--space-1); }
+.card form .form-control, .card form .form-select{ width:100%; padding:.55rem .7rem; border-radius:var(--radius-sm); border:1px solid var(--card-border); }
+.card form .form-actions{ margin-top:var(--space-3); display:flex; gap:var(--space-2); }
+
+/* ==========================================================================
+   Login page overrides
+   ========================================================================== */
+.admin-login-page .admin-login-container{
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-5);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media (max-width: 1199px){
+  .dashboard-grid,
+  .admin-dashboard-section .row{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 991px){
+  .admin-sidebar{ display: none; }
+
+  main.col-md-9, main.col-xl-10{ padding: var(--space-4); }
+
+
+/* ==========================================================================
+   Projects gallery (admin edit view)
+   ========================================================================== */
+.project-images-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+.project-images-grid .card{
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.project-images-grid .card img{
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+.project-images-grid .card .card-body{
+  padding: .5rem .6rem;
+}
+
+.admin-form input[type="file"]{
+  padding: .25rem .35rem;
+}
+
+@media (max-width: 991px){
+  .project-images-grid{ grid-template-columns: repeat(2, 1fr); }
+  .project-images-grid .card img{ height:120px; }
+}
+@media (max-width: 575px){
+  .project-images-grid{ grid-template-columns: 1fr; }
+  .project-images-grid .card img{ height:180px; }
+}
+  .dashboard-grid,
+  .admin-dashboard-section .row{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile sidebar overlay and visible state */
+/* When .sidebar-open is present on the admin-layout container, show the sidebar as overlay */
+@media (max-width: 991px){
+  .container-fluid.admin-layout.sidebar-open > .row > nav.admin-sidebar{
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 56px;
+    width: 260px;
+    height: calc(100vh - 56px);
+    z-index: 1200;
+    box-shadow: 0 8px 30px rgba(2,6,23,0.35);
+    transform: translateX(0);
+  }
+
+  .admin-sidebar-overlay{
+    position: fixed;
+    inset: 56px 0 0 0;
+    background: rgba(2,6,23,0.45);
+    z-index: 1100;
+  }
+
+  /* Ensure body doesn't scroll when sidebar is open; JS sets overflow hidden too */
+  .container-fluid.admin-layout.sidebar-open ~ body,
+  body.sidebar-open{ overflow: hidden; }
+}

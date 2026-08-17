@@ -1,0 +1,110 @@
+.gdo-hero {
+  --depth-x: 0px;
+  --depth-y: 0px;
+  --depth-tilt: 0deg;
+  overflow: hidden;
+}
+
+.gdo-hero .hero-pin-stage::before {
+  content: "";
+  position: absolute;
+  inset: -10%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(60, 120, 255, 0.18), transparent 32%),
+    radial-gradient(circle at 72% 24%, rgba(68, 201, 168, 0.16), transparent 28%),
+    radial-gradient(circle at 48% 70%, rgba(190, 118, 255, 0.12), transparent 24%);
+  filter: blur(40px);
+  transform: translate3d(calc(var(--depth-x) * 0.25), calc(var(--depth-y) * 0.25), 0) scale(1.08);
+}
+
+.gdo-hero .depth-field-layer {
+  position: absolute;
+  inset: -12%;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(122, 172, 255, 0.26) 0%, rgba(122, 172, 255, 0.11) 12%, rgba(122, 172, 255, 0.04) 24%, transparent 58%);
+  transform: translate3d(calc(var(--depth-x) * 0.4), calc(var(--depth-y) * 0.4), 0) scale(1.2);
+  filter: blur(18px);
+  opacity: 0.82;
+  mix-blend-mode: screen;
+}
+
+.gdo-hero .depth-field-layer--secondary {
+  inset: 8% 6% 10% 8%;
+  z-index: 3;
+  background:
+    radial-gradient(circle at 48% 28%, rgba(253, 208, 120, 0.22), transparent 26%),
+    radial-gradient(circle at 52% 64%, rgba(54, 118, 255, 0.18), transparent 30%);
+  transform: translate3d(calc(var(--depth-x) * -0.3), calc(var(--depth-y) * -0.3), 0) scale(1.18);
+  opacity: 0.68;
+}
+
+.gdo-hero .depth-field-text {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.94);
+  font-family: var(--gdo-font-mono, 'Inter', sans-serif);
+  font-size: clamp(0.75rem, 1.1vw, 1rem);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  pointer-events: none;
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.55);
+  mix-blend-mode: screen;
+}
+
+.gdo-hero .depth-field-layer .depth-field-text {
+  top: 18%;
+  left: 14%;
+}
+
+.gdo-hero .depth-field-layer--secondary .depth-field-text {
+  bottom: 16%;
+  right: 12%;
+}
+.gdo-hero #home-three-visual {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transform: translate3d(calc(var(--depth-x) * 0.15), calc(var(--depth-y) * 0.15), 0) scale(1.06);
+  transition: transform 0.25s ease-out;
+}
+
+.gdo-hero #home-three-visual canvas {
+  filter: saturate(1.12) contrast(1.06);
+  transform: scale(1.04) rotateX(calc(var(--depth-tilt) * 0.2));
+  transform-origin: center;
+  transition: transform 0.25s ease-out;
+}
+
+.gdo-hero .hero-overlay-panel {
+  position: relative;
+  z-index: 5;
+  transform: translate3d(calc(var(--depth-x) * 0.22), calc(var(--depth-y) * 0.18), 0);
+  transition: transform 0.25s ease-out;
+}
+
+.gdo-hero .gdo-scroll-cue,
+.gdo-hero .gdo-hud,
+.gdo-hero .drag-hint {
+  z-index: 6;
+}
+
+.gdo-hero .drag-hint {
+  transform: translate3d(calc(var(--depth-x) * 0.16), calc(var(--depth-y) * 0.16), 0);
+  transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+}
+
+.gdo-hero .gdo-hud__tag,
+.gdo-hero .gdo-hud__readout {
+  transform: translate3d(calc(var(--depth-x) * 0.1), calc(var(--depth-y) * 0.1), 0);
+}
+
+@media (max-width: 767px) {
+  .gdo-hero .depth-field-layer,
+  .gdo-hero .depth-field-layer--secondary {
+    inset: -8%;
+  }
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Our Lab | Geospatial Data Science Group</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-coordinate {
+            background-image: radial-gradient(var(--tw-colors-outline-variant) 1px, transparent 1px);
+            background-size: 80px 80px;
+            opacity: 0.1;
+        }
+        
+        .glass-panel {
+            background: rgba(247, 249, 251, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#b8efd0",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary-container": "#fc5d4f",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "secondary": "#b32821",
+                        "outline-variant": "#c0c9c1",
+                        "on-tertiary-container": "#92a2bb",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "primary": "#002819",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#404943",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#002114",
+                        "on-secondary-fixed-variant": "#910b0b",
+                        "surface-container": "#eceef0",
+                        "surface-tint": "#356850",
+                        "secondary-fixed": "#ffdad5",
+                        "on-primary-fixed-variant": "#1b503a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#610003",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-surface": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "inverse-primary": "#9cd2b5",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "background": "#f7f9fb",
+                        "outline": "#717973",
+                        "primary-fixed-dim": "#9cd2b5",
+                        "primary-container": "#06402b",
+                        "tertiary-container": "#29394d",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-secondary-fixed": "#410001",
+                        "on-background": "#191c1e",
+                        "tertiary": "#132337",
+                        "on-primary-container": "#77ac90"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen relative overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Global Coordinate Grid Background -->
+<div class="fixed inset-0 pointer-events-none z-[-1] bg-coordinate"></div>
+<!-- Top Navigation Bar -->
+<nav class="bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop h-20 w-full mx-auto max-w-7xl">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight scale-95 active:opacity-80 transition-transform" href="#">
+                GDSG
+            </a>
+<!-- Desktop Nav -->
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-headline-md text-headline-md text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary scale-95 active:opacity-80 transition-transform hover:text-secondary transition-colors duration-200" href="#">
+                    Research
+                </a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary scale-95 active:opacity-80 transition-transform hover:text-secondary transition-colors duration-200" href="#">
+                    Publications
+                </a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary scale-95 active:opacity-80 transition-transform hover:text-secondary transition-colors duration-200" href="#">
+                    Team
+                </a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary scale-95 active:opacity-80 transition-transform hover:text-secondary transition-colors duration-200" href="#">
+                    Data
+                </a>
+<a class="font-headline-md text-headline-md text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary scale-95 active:opacity-80 transition-transform hover:text-secondary transition-colors duration-200" href="#">
+                    Contact
+                </a>
+<div class="ml-4 flex items-center border-l border-outline-variant/30 pl-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary transition-colors mr-4" data-icon="search">search</span>
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-6 py-3 rounded-full hover:bg-surface-tint transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2">
+                        Join Lab
+                    </button>
+</div>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-xl px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Hero Section -->
+<header class="mb-xl grid grid-cols-1 lg:grid-cols-12 gap-gutter items-center">
+<div class="lg:col-span-7">
+<p class="font-label-mono text-label-mono text-secondary uppercase tracking-widest mb-md">About Our Lab</p>
+<h1 class="font-display-lg text-display-lg md:text-[80px] leading-[1.05] tracking-tight text-primary mb-md">
+                    Advancing geospatial science through rigorous inquiry.
+                </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                    The Geospatial Data Science Group (GDSG) is dedicated to unraveling complex spatial phenomena through advanced computational methods and interdisciplinary collaboration.
+                </p>
+</div>
+<div class="lg:col-span-5 relative h-64 md:h-[400px] rounded-xl overflow-hidden shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-outline-variant/20 mt-md lg:mt-0">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A modern, brightly lit high-tech scientific research laboratory environment. The setting features sleek workstations with large dual monitors displaying complex geospatial data maps and code. The room has a minimalist aesthetic with white walls, subtle gray accents, and vibrant green architectural lighting. A blurred researcher in a smart-casual outfit is visible in the background analyzing data. Shot with a high-end architectural photography style, natural daylight streaming in from large windows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ7JaW58NlmyjSdWfceB5lp2OqVjG5KXMK-rwvLFkZi4a3I-BkPgTZJ_r2BeGq2tmQ8sxwmE1AAbHJ6vucvDGyx_Gy9O2HRHqV7h8Q6_c92FpQqZJg730-wlQpuIMEx_hxghhYiZrr5HyzLl37VChemWFYcFKZUNDHnVT4cAGi0359p07YmRxh-V7yr_8EZB2uz2HuKtnB-guNTv80lnuBhTjAgJABiczmZqI54Ve4VvvFgHSNQzbw"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay"></div>
+</div>
+</header>
+<!-- Mission & Vision Bento Grid -->
+<section class="mb-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-base">
+<div class="col-span-1 lg:col-span-2 bg-surface-container-lowest p-md lg:p-lg rounded-xl border border-outline-variant/30 shadow-[0_4px_20px_rgba(0,0,0,0.02)] flex flex-col justify-between group hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] transition-all duration-300 relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary transform scale-y-0 group-hover:scale-y-100 transition-transform duration-300 origin-top"></div>
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="explore">explore</span>
+<h2 class="font-headline-md text-headline-md text-primary">Our Mission</h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-md">
+                            To develop robust, scalable, and equitable geospatial analytical frameworks that address critical global challenges. We strive to push the boundaries of spatial data science by integrating machine learning, high-performance computing, and fundamental geographic principles.
+                        </p>
+</div>
+</div>
+<div class="bg-surface-container-low p-md lg:p-lg rounded-xl border border-outline-variant/20 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+<h2 class="font-headline-md text-headline-md text-primary">Our Vision</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            A future where spatial intelligence seamlessly integrates into decision-making processes, fostering sustainable environments and resilient communities worldwide.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Research Philosophy -->
+<section class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg md:text-display-lg text-primary mb-lg border-b border-outline-variant/20 pb-sm">Research Philosophy</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="glass-panel p-md rounded-xl border border-outline-variant/30 relative">
+<span class="material-symbols-outlined text-secondary mb-md block text-[32px]" data-icon="science">science</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Scientific Excellence</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We prioritize methodological rigor and reproducible research. Our computational pipelines are designed for transparency and peer validation.</p>
+</div>
+<div class="glass-panel p-md rounded-xl border border-outline-variant/30 relative">
+<span class="material-symbols-outlined text-secondary mb-md block text-[32px]" data-icon="hub">hub</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Interdisciplinary Collaboration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Complex spatial problems require diverse perspectives. We actively partner with domain experts in ecology, urban planning, and public health.</p>
+</div>
+<div class="glass-panel p-md rounded-xl border border-outline-variant/30 relative">
+<span class="material-symbols-outlined text-secondary mb-md block text-[32px]" data-icon="code">code</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Open Science</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">We are committed to the open source community. Our datasets, models, and analytical tools are publicly accessible to foster global innovation.</p>
+</div>
+</div>
+</section>
+<!-- Institutional Partners Logo Wall -->
+<section class="mb-xl bg-surface-container-low py-lg px-md rounded-xl border border-outline-variant/20 text-center">
+<p class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest mb-lg">Institutional Partners &amp; Funding Agencies</p>
+<div class="flex flex-wrap justify-center items-center gap-xl opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Logos would be SVG vectors here, using text placeholders for structure -->
+<div class="font-headline-md text-headline-md font-bold text-primary">National Science Foundation</div>
+<div class="font-headline-md text-headline-md font-bold text-primary">European Space Agency</div>
+<div class="font-headline-md text-headline-md font-bold text-primary">University of Tech</div>
+<div class="font-headline-md text-headline-md font-bold text-primary">Global Earth Institute</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-on-primary-fixed w-full py-xl mt-auto border-t border-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-2">
+<div class="font-headline-lg text-headline-lg text-on-primary mb-md">GDSG</div>
+<p class="font-body-md text-body-md text-on-primary-container max-w-sm mb-lg">
+                    Geospatial Data Science Group.<br/>
+                    Advancing spatial intelligence for a sustainable future.
+                </p>
+<p class="font-label-mono text-label-mono text-on-primary-container opacity-70">
+                    © 2024 Geospatial Data Science Group. All rights reserved.
+                </p>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-mono text-label-mono text-on-primary uppercase tracking-widest mb-md">Resources</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity duration-200" href="#">Institutional Repository</a></li>
+<li><a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity duration-200" href="#">Open Science Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity duration-200" href="#">Lab Wiki</a></li>
+</ul>
+</div>
+<div class="col-span-1">
+<h4 class="font-label-mono text-label-mono text-on-primary uppercase tracking-widest mb-md">Legal</h4>
+<ul class="space-y-sm">
+<li><a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity duration-200" href="#">Ethics &amp; Privacy</a></li>
+</ul>
+</div>
+</div>
+</footer>
+</body></html>

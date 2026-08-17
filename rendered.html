@@ -1,0 +1,274 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GDSG is a research institute focused on GIS, GeoAI, remote sensing, spatial analytics, and Earth observation.">
+    <meta property="og:title" content="Geospatial Data Science Group">
+    <meta property="og:description" content="GDSG is a research institute focused on GIS, GeoAI, remote sensing, spatial analytics, and Earth observation.">
+    <meta property="og:type" content="website">
+    <meta name="author" content="Geospatial Data Science Group">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hanken+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <title>Home | Geospatial Data Science Group</title>
+</head>
+<body class="site-shell">
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent container py-3">
+        <a class="navbar-brand" href="index.php">
+            <span class="brand-icon">language</span>
+            <span>GDSG</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbar" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="siteNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link active" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="research.php">Research</a></li>
+                <li class="nav-item"><a class="nav-link" href="projects.php">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="publications.php">Publications</a></li>
+                <li class="nav-item"><a class="nav-link" href="team.php">Team</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.php">News</a></li>
+            </ul>
+            <a class="btn navbar-contact d-none d-lg-inline-flex" href="contact.php">Contact</a>
+        </div>
+    </nav>
+</header>
+<main>
+<section class="hero-section">
+    <div class="container hero-container">
+        <div class="hero-stage">
+            <div class="hero-visual" id="home-three-visual" aria-hidden="true"></div>
+            <div class="hero-panel">
+                <a class="hero-badge" href="#">Global Data Observatory Active</a>
+                <h1>Advancing Geospatial Intelligence</h1>
+                <p>Bridging Artificial Intelligence and Earth Observation to decode complex spatial dynamics, model environmental shifts, and engineer sustainable urban futures through rigorous scientific inquiry.</p>
+                <div class="hero-actions">
+                    <a href="research.php" class="btn btn-primary-custom">Explore Research</a>
+                    <a href="publications.php" class="btn btn-outline-secondary">View Publications</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+(function () {
+    const container = document.getElementById('home-three-visual');
+    if (!container || typeof THREE === 'undefined') {
+        return;
+    }
+
+    const width = container.clientWidth || 900;
+    const height = container.clientHeight || 600;
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(55, width / height, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    renderer.setSize(width, height);
+    container.appendChild(renderer.domElement);
+
+    const globeGroup = new THREE.Group();
+    scene.add(globeGroup);
+
+    const globeGeometry = new THREE.IcosahedronGeometry(1.8, 5);
+    const globeMaterial = new THREE.MeshStandardMaterial({
+        color: 0x1f7f4e,
+        emissive: 0x3366e0,
+        metalness: 0.15,
+        roughness: 0.7,
+        transparent: true,
+        opacity: 0.9,
+        wireframe: true
+    });
+    const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+    globeGroup.add(globe);
+
+    const grid = new THREE.GridHelper(6, 18, 0xa6b3a8, 0x6c7a6f);
+    grid.material.transparent = true;
+    grid.material.opacity = 0.18;
+    grid.rotation.x = Math.PI / 2;
+    globeGroup.add(grid);
+
+    const pointsGeometry = new THREE.BufferGeometry();
+    const pointCount = 180;
+    const positions = new Float32Array(pointCount * 3);
+    for (let i = 0; i < pointCount; i += 1) {
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+        const radius = 1.95 + Math.random() * 0.1;
+        positions[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+        positions[i * 3 + 1] = radius * Math.cos(phi);
+        positions[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+    }
+    pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    const pointsMaterial = new THREE.PointsMaterial({
+        color: 0xd52f2f,
+        size: 0.035,
+        transparent: true,
+        opacity: 0.9
+    });
+    const points = new THREE.Points(pointsGeometry, pointsMaterial);
+    globeGroup.add(points);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
+    scene.add(ambientLight);
+    const pointLight = new THREE.PointLight(0xffffff, 1.7);
+    pointLight.position.set(4, 4, 6);
+    scene.add(pointLight);
+
+    camera.position.set(0, 0, 5.8);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    container.addEventListener('pointermove', (event) => {
+        const rect = container.getBoundingClientRect();
+        mouseX = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouseY = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        globe.rotation.y += 0.002;
+        points.rotation.y += 0.003;
+        globeGroup.rotation.y += (mouseX * 0.16 - globeGroup.rotation.y) * 0.06;
+        globeGroup.rotation.x += (mouseY * 0.14 - globeGroup.rotation.x) * 0.06;
+        renderer.render(scene, camera);
+    }
+
+    window.addEventListener('resize', () => {
+        const newWidth = container.clientWidth || 900;
+        const newHeight = container.clientHeight || 600;
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newWidth, newHeight);
+    });
+
+    animate();
+})();
+</script>
+<section class="content-section">
+    <div class="container">
+        <div class="section-heading">
+            <h2>Core Domains</h2>
+            <p>Methodological foundations for spatial intelligence</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <article class="info-card hover-reveal-accent">
+                    <a class="btn btn-core-domain" href="#">forecast</a>
+                    <h3>GeoAI &amp; Predictive Modeling</h3>
+                    <p>Building machine-learning workflows for AQI forecasting, pollution-source attribution, and spatiotemporal risk prediction using environmental and geospatial data.</p>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <article class="info-card hover-reveal-accent">
+                    <a class="btn btn-core-domain" href="#">satellite</a>
+                    <h3>Earth Observation &amp; Remote Sensing</h3>
+                    <p>Integrating satellite, aerial, and sensor data to monitor land-use change, environmental stress, and climate-sensitive conditions across regions.</p>
+                </article>
+            </div>
+            <div class="col-lg-4">
+                <article class="info-card hover-reveal-accent">
+                    <a class="btn btn-core-domain" href="#">location</a>
+                    <h3>Spatial Analytics &amp; Location Intelligence</h3>
+                    <p>Developing geospatial pipelines for addressing, administrative hierarchy, and multi-scale analysis to support planning, service delivery, and evidence-based decisions.</p>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-section content-section--muted">
+    <div class="container">
+        <div class="section-heading section-heading--split">
+            <div>
+                <h2>Featured Projects</h2>
+                <p>Current initiatives shaping sustainable and data-driven urban futures.</p>
+            </div>
+            <a href="projects.php" class="btn btn-outline-secondary">View all projects</a>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <article class="project-card">
+                    <div class="project-card__media project-card__media--one"></div>
+                    <div class="project-card__body">
+                        <span class="project-pill">Grant Awarded</span>
+                        <h3>Urban Heat Island Mitigation Modeling</h3>
+                        <p>Applying spatiotemporal deep learning to support urban cooling strategies and greenhouse gas reduction planning.</p>
+                        <a href="project.php">View project details</a>
+                    </div>
+                </article>
+            </div>
+            <div class="col-lg-6">
+                <article class="project-card">
+                    <div class="project-card__media project-card__media--two"></div>
+                    <div class="project-card__body">
+                        <span class="project-pill project-pill--accent">New</span>
+                        <h3>Topological Neural Networks for Spatial Graphs</h3>
+                        <p>Designing graph-based GeoAI models to interpret complex spatial relationships in infrastructure and environmental networks.</p>
+                        <a href="project.php">View project details</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content-section">
+    <div class="container">
+        <div class="newsletter-card">
+            <div>
+                <h2>Research Updates</h2>
+                <p>Quarterly publications and methodological insights from the lab.</p>
+            </div>
+            <a href="news.php" class="btn btn-primary-custom">Read news</a>
+        </div>
+    </div>
+</section>
+</main>
+<footer class="site-footer site-footer-featured">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h5>GDSG</h5>
+                <p>Advancing spatial science through computational rigor, remote sensing, and responsible AI.</p>
+            </div>
+            <div class="footer-column">
+                <h6>Explore</h6>
+                <ul class="list-unstyled">
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="research.php">Research</a></li>
+                    <li><a href="projects.php">Projects</a></li>
+                    <li><a href="publications.php">Publications</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h6>Resources</h6>
+                <ul class="list-unstyled">
+                    <li><a href="team.php">Team</a></li>
+                    <li><a href="news.php">News</a></li>
+                    <li><a href="gallery.php">Gallery</a></li>
+                    <li><a href="contact.php">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h6>Contact</h6>
+                <p class="mb-1">Email: info@gdsg.org</p>
+                <p class="mb-1">Phone: +1 (555) 123-4567</p>
+                <p class="mb-0">Office hours: Mon - Fri, 9:00 AM - 6:00 PM</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <small>&copy; 2026 Geospatial Data Science Group. All rights reserved.</small>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="/assets/js/main.js"></script>
+</body>
+</html>
+

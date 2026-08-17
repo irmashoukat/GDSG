@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Active Research Projects - GDSG</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#b8efd0",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary-container": "#fc5d4f",
+                        "on-tertiary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "secondary": "#b32821",
+                        "outline-variant": "#c0c9c1",
+                        "on-tertiary-container": "#92a2bb",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "primary": "#002819",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "on-surface-variant": "#404943",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed": "#002114",
+                        "on-secondary-fixed-variant": "#910b0b",
+                        "surface-container": "#eceef0",
+                        "surface-tint": "#356850",
+                        "secondary-fixed": "#ffdad5",
+                        "on-primary-fixed-variant": "#1b503a",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#610003",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-surface": "#191c1e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "inverse-primary": "#9cd2b5",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-surface": "#2d3133",
+                        "background": "#f7f9fb",
+                        "outline": "#717973",
+                        "primary-fixed-dim": "#9cd2b5",
+                        "primary-container": "#06402b",
+                        "tertiary-container": "#29394d",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-secondary-fixed": "#410001",
+                        "on-background": "#191c1e",
+                        "tertiary": "#132337",
+                        "on-primary-container": "#77ac90"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px",
+                        "xs": "4px",
+                        "xl": "80px",
+                        "lg": "48px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            background-image: radial-gradient(#e0e3e5 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .glass-panel {
+            background: rgba(247, 249, 251, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(192, 201, 193, 0.3);
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 40, 25, 0.04);
+            border-left: 2px solid #b32821;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md relative overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center px-margin-desktop h-20 w-full mx-auto max-w-[1600px]">
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight" href="#">GDSG</a>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-secondary dark:text-secondary-fixed-dim font-bold border-b-2 border-secondary h-20 flex items-center" href="#">Research</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary transition-colors duration-200 h-20 flex items-center" href="#">Publications</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary transition-colors duration-200 h-20 flex items-center" href="#">Team</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary transition-colors duration-200 h-20 flex items-center" href="#">Data</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant/80 hover:text-primary transition-colors duration-200 h-20 flex items-center" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-mono text-label-mono hover:bg-primary-container transition-colors scale-95 active:opacity-80">
+                    Join Lab
+                </button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-32 pb-xl px-margin-mobile md:px-margin-desktop max-w-[1600px] mx-auto w-full relative z-10">
+<!-- Header & Filters -->
+<header class="mb-xl">
+<h1 class="font-display-lg text-display-lg text-primary mb-md">Active Research Projects</h1>
+<div class="glass-panel p-md rounded-xl flex flex-col md:flex-row gap-gutter items-end">
+<div class="w-full md:w-1/3">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-xs uppercase">Search</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border-b border-outline-variant focus:border-primary focus:ring-0 pl-10 py-sm outline-none transition-colors" placeholder="Keywords, topics, PIs..." type="text"/>
+</div>
+</div>
+<div class="w-full md:w-1/4">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-xs uppercase">Status</label>
+<select class="w-full bg-surface-container-lowest border-b border-outline-variant focus:border-primary focus:ring-0 py-sm outline-none appearance-none">
+<option>All Statuses</option>
+<option>Ongoing</option>
+<option>Completed</option>
+<option>In Review</option>
+</select>
+</div>
+<div class="w-full md:w-1/4">
+<label class="block font-label-mono text-label-mono text-on-surface-variant mb-xs uppercase">Domain</label>
+<select class="w-full bg-surface-container-lowest border-b border-outline-variant focus:border-primary focus:ring-0 py-sm outline-none appearance-none">
+<option>All Domains</option>
+<option>Urban Analytics</option>
+<option>Climate Modeling</option>
+<option>Remote Sensing</option>
+</select>
+</div>
+<div class="w-full md:w-auto flex-shrink-0">
+<button class="w-full md:w-auto bg-surface-container border border-outline-variant text-on-surface px-6 py-sm rounded-full font-label-mono text-label-mono hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filters
+                    </button>
+</div>
+</div>
+</header>
+<!-- Project Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<article class="project-card bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/50 flex flex-col h-full relative">
+<div class="h-48 w-full bg-surface-container-high relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="High-resolution false-color satellite imagery of an urban sprawl, highlighting vegetation heat signatures in vibrant reds against stark concrete grays, conveying a high-tech, precision geospatial analysis aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtQzLjGsV0ILKkN67qPUX_GJpnCkYomd3wjoR3W-qk2og3tbiRbNJZPy2uxksvaCIQnhPVzwhiBa7-Ns4b-56feWztDfbEnuOGbax0iGLTiFtM7pZM3cZcoYYVolyqn-dwisgNMDs9whjOUDReTC5A1XWP94-061pm0Wo-gUBO-HWzP7Ry_Hj5zqRwhA0TkNyapJBR9CXDz5iWtwIwqX8-mD0PtIWajLJ3YTtx5E-DzFbKxlssx0kz')"></div>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-mono text-[11px] uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed block"></span> Ongoing
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex gap-2 mb-sm flex-wrap">
+<span class="text-xs font-label-mono text-secondary">#UrbanHeat</span>
+<span class="text-xs font-label-mono text-secondary">#SAR</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-sm line-clamp-2">Thermographic Mapping of Urban Microclimates via Satellite Aperture Radar</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-3">Utilizing high-cadence SAR data to model the thermal retention of varying concrete compositions in high-density metropolitan zones.</p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="Professional headshot of a female geospatial researcher in a modern, well-lit lab environment, wearing smart-casual academic attire." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB4L-MItPqQgIsQ5uViQwDljMd3A2Xraqt_CUN5P1Mn0NIT6QsjSP-7LE7Uwu4jIuNc4NeIBjpS62cQdS0WoksZCfH8sXQag8RCK1MrnwO4dFXgUggmGeMKuQdPyD0xptcHsKnTmRN22cj1jRLVoee3q9gb5R2sWDbvHqhunXYcR117269fHZ1jYdNUet-DvO7aOns9F4corot0Emv6w8pA7hp-Mnl76fnaI5GT_YCHcn6dIfPW_uXC"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Dr. E. Vance</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant uppercase">Lead PI</span>
+</div>
+</div>
+<a class="text-primary hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="project-card bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/50 flex flex-col h-full relative">
+<div class="h-48 w-full bg-surface-container-high relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A detailed 3D point cloud visualization generated from LiDAR data, showing complex forest canopy structures in varying shades of deep green and cyan against a minimalist light background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAZYZ6yvYbuD9HK6WvBg-hbbIz8T-PAANbYyJLwNI4p8nILk2H9guw2RHp8oDGlIsq4LGS-ESvdKeZeqUdvise1koSwnmGiW2V8hUUnE0k9dTqYyMC18qYwf2OKd9x-Km9eIhJ_xplNzlewVi3G7F-wcZV9q98aDWJqWFNoFk1AAz9A6DWe-FKcI1zxoOTADq0Uv0MbCa0He3TMT0Za7cMU0xDA3Juo-Inh0YGzuGNiEcwbNUbtYrS4')"></div>
+<div class="absolute top-4 left-4 bg-surface-variant text-on-surface-variant px-3 py-1 rounded-full font-label-mono text-[11px] uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-outline block"></span> Completed
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex gap-2 mb-sm flex-wrap">
+<span class="text-xs font-label-mono text-secondary">#LiDAR</span>
+<span class="text-xs font-label-mono text-secondary">#Biomass</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-sm line-clamp-2">Algorithmic Estimation of Boreal Forest Biomass Densities</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-3">A completed retrospective study applying machine learning algorithms to historical aerial LiDAR scans to establish biomass baselines.</p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<img class="w-8 h-8 rounded-full object-cover border border-outline-variant" data-alt="Professional headshot of a male data scientist looking intently off-camera, set against a clean, bright minimalist office background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAj19QEIet9lDS6LV-102nN5T64L8Kop05RpSfW34NuzTRCXtbJ3aU3oXV95g8-PGl8JZexoDaHfvMxWQ1m7fAHyZ5tMBCj0OWjiPAshCuaAZWBtblvNoxQ5MwToeW6E6GjDA5v6us9rf4xQDMLNcl8VEY8QAN7N2mMs9BSPLUxnPbvIsMpwKLcHXVd2c_QZOREbBC4CgGadJj4jcQ22gGQXRr2PasWMgsmDPmwbP48nsTs0av-7x75"/>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">M. Chen</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant uppercase">Data Sci</span>
+</div>
+</div>
+<a class="text-primary hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="project-card bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/50 flex flex-col h-full relative">
+<div class="h-48 w-full bg-surface-container-high relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="Abstract geometric data visualization overlaying a topographic map, using high-contrast minimalist colors (blacks, whites, forest greens) to represent predictive movement modeling." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBZCgyfDDoCbFRO12PfRJDzoIkMtOVriCSFbBjTo5MKU41MBxQnDx3ajt3TSNTIg_NBxsgAedMzSt4fw7b5vcLTHhXDvAf4Azlhe7lBSoTVLt-gVTu6TC3xhXJ4LHL7jydlCNHft1xONEWsNm23FHePqK6Svz0C_JedtEx2fLeIm0z10XsQpXKktsOXNCE43FlW3BU30Z9lCRgFcQdMJHKe11dIX6HVV8PpCXaKxHRLzkj130bPV-lG')"></div>
+<div class="absolute top-4 left-4 bg-primary text-on-primary px-3 py-1 rounded-full font-label-mono text-[11px] uppercase tracking-wider flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-fixed block"></span> Ongoing
+                    </div>
+</div>
+<div class="p-md flex flex-col flex-grow">
+<div class="flex gap-2 mb-sm flex-wrap">
+<span class="text-xs font-label-mono text-secondary">#GeoAI</span>
+<span class="text-xs font-label-mono text-secondary">#Mobility</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-sm line-clamp-2">Predictive Kinematics in Post-Disaster Evacuation Routing</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow line-clamp-3">Developing real-time adaptive routing models using GeoAI to optimize civilian displacement trajectories during acute seismic events.</p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center border border-outline-variant font-label-mono text-xs font-bold text-on-surface">SR</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-on-surface">Dr. S. Rahman</span>
+<span class="text-[10px] font-label-mono text-on-surface-variant uppercase">Co-PI</span>
+</div>
+</div>
+<a class="text-primary hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-xl flex justify-center">
+<button class="bg-transparent border border-primary text-primary px-8 py-3 rounded-full font-label-mono text-label-mono hover:bg-surface-variant transition-colors flex items-center gap-2">
+                Load More Projects
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-xl mt-auto bg-primary dark:bg-on-primary-fixed border-t border-primary-container">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop max-w-7xl mx-auto">
+<div class="col-span-1 md:col-span-1">
+<span class="font-headline-lg text-headline-lg text-on-primary block mb-sm">GDSG</span>
+<p class="font-body-md text-body-md text-on-primary-container text-sm">© 2024 Geospatial Data Science Group. All rights reserved.</p>
+</div>
+<div class="col-span-1 md:col-span-3 flex flex-wrap gap-8 md:justify-end items-center">
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity" href="#">Ethics &amp; Privacy</a>
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity" href="#">Institutional Repository</a>
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity" href="#">Open Science Policy</a>
+<a class="font-body-md text-body-md text-on-primary-container hover:text-on-primary transition-opacity" href="#">Lab Wiki</a>
+</div>
+</div>
+</footer>
+</body></html>

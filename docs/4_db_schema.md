@@ -1,0 +1,13 @@
+users
+research_areas
+projects
+project_images
+project_members
+team_members
+publications
+news
+events
+gallery
+partners
+contact_messages
+settings

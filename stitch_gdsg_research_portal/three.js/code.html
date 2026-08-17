@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Geometry: A wireframe globe with data points
+const globeRadius = 2.5;
+const globeGeometry = new THREE.SphereGeometry(globeRadius, 64, 64);
+const globeMaterial = new THREE.MeshPhongMaterial({
+    color: 0x06402b,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.2,
+});
+const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+scene.add(globe);
+
+// Grid pattern on the globe
+const gridHelper = new THREE.PolarGridHelper(globeRadius * 1.1, 16, 8, 64);
+gridHelper.rotation.x = Math.PI / 2;
+gridHelper.material.transparent = true;
+gridHelper.material.opacity = 0.1;
+scene.add(gridHelper);
+
+// Floating data points (GeoAI points)
+const pointsCount = 200;
+const pointsGeometry = new THREE.BufferGeometry();
+const positions = new Float32Array(pointsCount * 3);
+
+for (let i = 0; i < pointsCount; i++) {
+    const phi = Math.acos(-1 + (2 * i) / pointsCount);
+    const theta = Math.sqrt(pointsCount * Math.PI) * phi;
+    
+    const x = globeRadius * Math.cos(theta) * Math.sin(phi);
+    const y = globeRadius * Math.sin(theta) * Math.sin(phi);
+    const z = globeRadius * Math.cos(phi);
+    
+    positions[i * 3] = x * (1 + Math.random() * 0.1);
+    positions[i * 3 + 1] = y * (1 + Math.random() * 0.1);
+    positions[i * 3 + 2] = z * (1 + Math.random() * 0.1);
+}
+
+pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const pointsMaterial = new THREE.PointsMaterial({
+    color: 0x06402b,
+    size: 0.05,
+    transparent: true,
+    opacity: 0.8,
+});
+const points = new THREE.Points(pointsGeometry, pointsMaterial);
+scene.add(points);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+camera.position.z = 6;
+
+// Mouse interaction
+let mouseX = 0;
+let mouseY = 0;
+window.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    globe.rotation.y += 0.002;
+    points.rotation.y += 0.003;
+    
+    scene.rotation.y += (mouseX * 0.1 - scene.rotation.y) * 0.05;
+    scene.rotation.x += (mouseY * 0.1 - scene.rotation.x) * 0.05;
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth || window.innerWidth;
+    const newHeight = container.clientHeight || window.innerHeight;
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(newWidth, newHeight);
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+</body>
+</html>

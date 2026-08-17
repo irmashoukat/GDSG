@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Research Team - Geospatial Data Science Group (GDSG)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;600;700&amp;family=Inter:wght@400&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#717973",
+                      "secondary-fixed-dim": "#ffb4aa",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#410001",
+                      "tertiary-fixed": "#d3e4fe",
+                      "surface-container-low": "#f2f4f6",
+                      "on-primary-fixed": "#002114",
+                      "tertiary": "#132337",
+                      "surface-container-high": "#e6e8ea",
+                      "on-primary-container": "#77ac90",
+                      "primary": "#002819",
+                      "background": "#f7f9fb",
+                      "secondary-container": "#fc5d4f",
+                      "on-primary": "#ffffff",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#9cd2b5",
+                      "on-tertiary-container": "#92a2bb",
+                      "surface-dim": "#d8dadc",
+                      "surface-tint": "#356850",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary": "#b32821",
+                      "on-surface-variant": "#404943",
+                      "surface": "#f7f9fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "error-container": "#ffdad6",
+                      "tertiary-container": "#29394d",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "outline-variant": "#c0c9c1",
+                      "on-surface": "#191c1e",
+                      "on-secondary-container": "#610003",
+                      "primary-container": "#06402b",
+                      "inverse-surface": "#2d3133",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#9cd2b5",
+                      "surface-bright": "#f7f9fb",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "surface-variant": "#e0e3e5",
+                      "secondary-fixed": "#ffdad5",
+                      "on-primary-fixed-variant": "#1b503a",
+                      "on-error": "#ffffff",
+                      "error": "#ba1a1a",
+                      "on-secondary-fixed-variant": "#910b0b",
+                      "primary-fixed": "#b8efd0",
+                      "on-tertiary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "24px",
+                      "base": "8px",
+                      "margin-desktop": "64px",
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "xl": "80px",
+                      "margin-mobile": "16px",
+                      "lg": "48px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "label-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .coordinate-bg {
+            background-image: radial-gradient(#e0e3e5 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 40, 25, 0.04);
+            border-left: 2px solid #b32821;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col coordinate-bg relative">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl bg-surface-container/40 dark:bg-surface-container-highest/10 border-b border-outline-variant/30 shadow-sm backdrop-blur-md">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-margin-desktop h-20">
+<div class="flex items-center gap-sm hover:scale-95 duration-200 ease-out cursor-pointer">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-size: 28px;">language</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">GDSG</span>
+</div>
+<nav class="hidden md:flex gap-md h-full items-center">
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md font-medium hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-all duration-300 px-3 py-2 rounded-md" href="#">GeoAI</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md font-medium hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-all duration-300 px-3 py-2 rounded-md" href="#">Earth Observation</a>
+<a class="text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors font-body-md text-body-md font-medium hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-all duration-300 px-3 py-2 rounded-md" href="#">Publications</a>
+<a class="text-primary dark:text-primary-fixed-dim border-b-2 border-secondary font-semibold font-body-md text-body-md h-full flex items-center px-3 hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-all duration-300" href="#">Team</a>
+</nav>
+<button class="bg-primary text-on-primary font-body-md text-body-md font-medium px-md py-sm rounded-full hover:bg-primary-container transition-colors duration-200 scale-95 duration-200 ease-out">
+                Contact
+            </button>
+</div>
+</header>
+<main class="flex-grow pt-32 pb-xl px-margin-desktop max-w-7xl mx-auto w-full">
+<!-- Editorial Header -->
+<section class="mb-xl max-w-3xl">
+<h1 class="font-display-lg text-display-lg text-primary mb-md">Research Team</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                A multidisciplinary collective of scientists and engineers pioneering the intersection of Artificial Intelligence, Geographic Information Systems, and advanced Earth Observation technologies to solve complex spatial challenges.
+            </p>
+</section>
+<!-- Leadership Section -->
+<section class="mb-xl">
+<div class="bg-surface border border-outline-variant rounded-xl p-md md:p-lg flex flex-col md:flex-row gap-lg items-center relative overflow-hidden card-hover transition-all duration-300 shadow-sm backdrop-blur-md">
+<!-- Decorative Accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<div class="w-48 h-48 md:w-64 md:h-64 flex-shrink-0">
+<img class="w-full h-full object-cover rounded-full border-4 border-surface shadow-md" data-alt="A highly detailed, professional portrait of a senior female scientist, Dr. Elena Rostova, with an expression of intellectual rigor and approachable authority. The lighting is sophisticated and bright, fitting a high-tech academic environment. The backdrop is minimally distracting, slightly hinting at a modern laboratory or computational center with soft glass reflections and deep forest green accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDewmKmUZSfVxYPo4iJ7I_Dba_QkM5t5UgfYT840YweKp4CEZgDeCAGtUe1I0_XKzidxgx2tKkzYakftkZFBgKB3liNHi0wW8reRa0hhoSaQXcM0h2x0kjI2ExeziuwOOP2pSROEaTvaqMkOrsiX98tSHy1Gbw8Mmf5W-2HdU1rGsk3XO6kh04nbvXS-n3qsVjt5GXFMBPQnNhOSINA0DP3_bsM9-aojh7jF-Ck5fqc3Ifgw-rUXTUT"/>
+</div>
+<div class="flex-grow flex flex-col">
+<div class="flex items-center gap-sm mb-xs">
+<span class="font-label-mono text-label-mono text-secondary bg-error-container/30 px-2 py-1 rounded">Lead Scientist</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">location_on</span> GDSG Lab Hub</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-sm">Dr. Elena Rostova</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md max-w-2xl">
+                        Dr. Rostova leads the Geospatial Data Science Group, focusing on the application of deep learning techniques to large-scale, multi-modal Earth Observation data. Her pioneering work in GeoAI has established new paradigms in automated urban land-cover classification and dynamic environmental monitoring.
+                    </p>
+<div class="flex flex-wrap gap-sm mb-lg">
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full">#GeoAI</span>
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full">#DeepLearning</span>
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full">#EarthObservation</span>
+</div>
+<div class="flex gap-md">
+<button class="bg-primary text-on-primary font-body-md text-body-md px-md py-sm rounded-full hover:bg-primary-container transition-colors flex items-center gap-xs">
+                            View Profile <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="border border-outline text-primary font-body-md text-body-md px-md py-sm rounded-full hover:bg-surface-container-low transition-colors flex items-center gap-xs">
+                            Publications <span class="material-symbols-outlined text-[18px]">menu_book</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Grid -->
+<section>
+<h3 class="font-headline-md text-headline-md text-primary mb-lg border-b border-outline-variant/50 pb-sm">Researchers &amp; Analysts</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-md flex flex-col items-center text-center card-hover transition-all duration-300 shadow-sm">
+<img class="w-32 h-32 object-cover rounded-full mb-md shadow-sm" data-alt="A professional headshot of Marcus Chen, a young male Ph.D. researcher. He looks determined and intelligent, set against a clean, modern, brightly lit academic setting. The color palette emphasizes clean whites and deep forest greens, reflecting the high-tech, precise aesthetic of the Geospatial Data Science Group." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKzylmVAxWt66dVJavICKGe5gPpH-RBcWCalj0iRwJOxOunqRRCzQWpVZM30bTv7IPAv9CeVNEMKhZ1fXflkumEBe9DbXsJ341zmBSwEhzS5M4_bRkBFlsM8DSQCKFeJkUC5Craym4Oj7sbru3xrLjf0g3jufU7BSeIhKa8zpt86Nmu1xi_tGuTGpt5d6tIZjESzIwjUcr_mzDbz9ITnisfUw-hMR0MLblrnVJYmBtCQD3CGVltrk_"/>
+<span class="font-label-mono text-label-mono text-secondary mb-xs">Ph.D. Researcher</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-sm">Marcus Chen</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">
+                        Investigating multi-temporal SAR data for precise deformation monitoring and structural health assessment of critical infrastructure.
+                    </p>
+<div class="flex flex-wrap gap-xs justify-center mb-md">
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-2 py-1 rounded text-[11px]">#SAR</span>
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-2 py-1 rounded text-[11px]">#EarthObservation</span>
+</div>
+<button class="w-full border border-outline text-primary font-body-md text-body-md px-md py-2 rounded-full hover:bg-surface-container-low transition-colors">
+                        View Profile
+                    </button>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-md flex flex-col items-center text-center card-hover transition-all duration-300 shadow-sm">
+<img class="w-32 h-32 object-cover rounded-full mb-md shadow-sm" data-alt="A professional portrait of Sarah Jenkins, a female Geospatial Analyst. She holds a confident, analytic gaze. The environment is minimalist and bright, indicative of a modern data science workspace. Subtle nods to scientific rigor are present in the precise lighting and clean lines of the background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBns4Iyg8nDiXtrCmfNA8NaEL37CZSY3mNq7WdPz4-BuICQMDyKmV_QgCQa2gVAXHM2z_3PqqALSz2feuijiSWmdTjPYycP2W_cMoCrIUmNZLZu9eDETSP7gKQdXlAw9MkKcr0DnDNUcnBulFvDTwd9j-dglHRKf996h545XWbIpoIT7MRhCOR8peHnEfnbItLRwzomMBq-oswHrazz5fvtuas4dn8qZFPc8FrNdVN8VXvZPBHb3ewd"/>
+<span class="font-label-mono text-label-mono text-secondary mb-xs">Geospatial Analyst</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-sm">Sarah Jenkins</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">
+                        Developing interactive dashboards and applying spatial epidemiology models to track and visualize environmental health metrics globally.
+                    </p>
+<div class="flex flex-wrap gap-xs justify-center mb-md">
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-2 py-1 rounded text-[11px]">#GIS</span>
+<span class="font-label-mono text-label-mono bg-surface-container-high text-on-surface-variant px-2 py-1 rounded text-[11px]">#SpatialEpidemiology</span>
+</div>
+<button class="w-full border border-outline text-primary font-body-md text-body-md px-md py-2 rounded-full hover:bg-surface-container-low transition-colors">
+                        View Profile
+                    </button>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface border border-outline-variant rounded-xl p-md flex flex-col items-center text-center card-hover transition-all duration-300 shadow-sm border-dashed">
+<div class="w-32 h-32 rounded-full bg-surface-container-high flex items-center justify-center mb-md text-on-surface-variant/50">
+<span class="material-symbols-outlined text-[48px]">person</span>
+</div>
+<span class="font-label-mono text-label-mono text-secondary mb-xs">Research Fellow</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-sm">Open Position</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">
+                        We are currently seeking a Research Fellow specialized in Urban Remote Sensing. Apply to join our multidisciplinary team.
+                    </p>
+<button class="w-full bg-primary-container text-on-primary-container font-body-md text-body-md px-md py-2 rounded-full hover:bg-primary/90 hover:text-white transition-colors">
+                        View Details
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container border-t border-primary-fixed-dim/20 w-full py-xl px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter font-label-mono text-label-mono">
+<div class="flex flex-col gap-sm col-span-1 md:col-span-1">
+<span class="font-headline-md text-headline-md text-on-primary">GDSG</span>
+<p class="text-on-primary/70 mt-sm">© 2024 Geospatial Data Science Group. All Rights Reserved.</p>
+</div>
+<div class="flex flex-col gap-md col-span-1 md:col-span-3 items-start md:items-end md:justify-end">
+<div class="flex flex-col md:flex-row gap-lg">
+<a class="text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Privacy Policy</a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Terms of Service</a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Research Ethics</a>
+<a class="text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Contact Us</a>
+</div>
+</div>
+</footer>
+</body></html>

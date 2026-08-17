@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GDSG - Research Domains</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "on-secondary-container": "#610003",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-tint": "#356850",
+                        "on-error": "#ffffff",
+                        "primary": "#002819",
+                        "on-tertiary-container": "#92a2bb",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#b8efd0",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#9cd2b5",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-fixed": "#410001",
+                        "inverse-surface": "#2d3133",
+                        "tertiary-container": "#29394d",
+                        "primary-fixed-dim": "#9cd2b5",
+                        "primary-container": "#06402b",
+                        "on-secondary-fixed-variant": "#910b0b",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#404943",
+                        "secondary-fixed": "#ffdad5",
+                        "on-primary-fixed-variant": "#1b503a",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-container": "#77ac90",
+                        "secondary": "#b32821",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#fc5d4f",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "tertiary": "#132337",
+                        "on-background": "#191c1e",
+                        "tertiary-fixed": "#d3e4fe",
+                        "on-error-container": "#93000a",
+                        "background": "#f7f9fb",
+                        "outline-variant": "#c0c9c1",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-fixed": "#002114",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-bright": "#f7f9fb",
+                        "outline": "#717973",
+                        "on-surface": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "margin-mobile": "16px",
+                        "xl": "80px",
+                        "margin-desktop": "64px",
+                        "lg": "48px",
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "24px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-mono": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "label-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .bg-coordinate-grid {
+            background-image: radial-gradient(circle, #e0e3e5 1px, transparent 1px);
+            background-size: 80px 80px;
+            background-attachment: fixed;
+        }
+        .card-hover-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+        .card-hover-reveal::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: theme('colors.secondary');
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s ease;
+        }
+        .card-hover-reveal:hover::before {
+            transform: scaleY(1);
+            transform-origin: top;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased bg-coordinate-grid min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-surface/80 dark:bg-surface/80 backdrop-blur-xl fixed top-0 w-full z-50 border-b border-outline-variant/30 shadow-sm glass-effect transition-all duration-300">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-full mx-auto">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">
+                GDSG
+            </div>
+<nav class="hidden md:flex gap-md">
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Home</a>
+<a class="text-primary dark:text-primary-fixed font-bold border-b-2 border-primary dark:border-primary-fixed pb-1 font-body-md text-body-md px-sm py-xs" href="#">Research</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Projects</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Publications</a>
+<a class="text-on-surface-variant dark:text-surface-variant hover:text-primary dark:hover:text-primary-fixed transition-colors font-body-md text-body-md hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-all duration-200 px-sm py-xs rounded-DEFAULT" href="#">Team</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-primary-container text-on-primary rounded-full px-lg py-sm font-body-md text-body-md hover:opacity-80 transition-opacity">
+                    Join Lab
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-[144px] pb-xl px-margin-desktop w-full max-w-[1600px] mx-auto">
+<!-- Header Section -->
+<section class="mb-xl grid grid-cols-12 gap-gutter">
+<div class="col-span-12 md:col-span-8 lg:col-span-6">
+<h1 class="font-display-lg text-display-lg text-primary mb-md">Research Domains</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+                    The Geospatial Data Science Group employs a rigorous, multi-disciplinary approach to unravel complex spatial phenomena. We integrate advanced computational methods with domain expertise to address pressing global challenges, pushing the boundaries of spatial science and predictive modeling.
+                </p>
+</div>
+</section>
+<!-- Search & Filter Bar -->
+<section class="mb-lg sticky top-[100px] z-40 bg-background/80 backdrop-blur-md py-sm rounded-lg border border-outline-variant/30 flex justify-between items-center px-md shadow-sm">
+<div class="flex-grow max-w-md relative">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-body-md pl-lg py-xs placeholder:text-outline text-on-surface" placeholder="Search domains or keywords..." type="text"/>
+<div class="absolute bottom-0 left-0 w-full h-[1px] bg-outline-variant transition-colors focus-within:bg-primary-container focus-within:h-[2px]"></div>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs px-sm py-xs border border-outline-variant rounded-full text-label-mono font-label-mono text-on-surface hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">filter_list</span> Filters
+                </button>
+<button class="px-sm py-xs rounded-full text-label-mono font-label-mono text-secondary bg-secondary/10 hover:bg-secondary/20 transition-colors">
+                    Reset
+                </button>
+</div>
+</section>
+<!-- Research Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Domain Card 1 -->
+<article class="bg-surface rounded-xl border border-outline-variant/50 p-lg flex flex-col gap-md shadow-[0_4px_40px_-4px_rgba(0,0,0,0.04)] card-hover-reveal transition-all hover:shadow-[0_8px_40px_-4px_rgba(0,0,0,0.08)]">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary-container/10 rounded-lg text-primary-container">
+<span class="material-symbols-outlined text-[32px]">public</span>
+</div>
+<span class="font-label-mono text-label-mono text-outline">DOM-01</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">GeoAI &amp; Machine Learning</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Leveraging deep learning and advanced neural network architectures to extract actionable intelligence from complex, multi-modal spatial datasets. Our research focuses on improving the scalability and interpretability of spatial models for broad-scale predictive analytics.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-xs mt-auto">
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Computer Vision</span>
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Predictive Modeling</span>
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Deep Learning</span>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant/30 flex justify-end">
+<a class="inline-flex items-center gap-xs font-body-md text-body-md font-medium text-primary hover:text-secondary transition-colors group" href="#">
+                        Learn More <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Domain Card 2 -->
+<article class="bg-surface rounded-xl border border-outline-variant/50 p-lg flex flex-col gap-md shadow-[0_4px_40px_-4px_rgba(0,0,0,0.04)] card-hover-reveal transition-all hover:shadow-[0_8px_40px_-4px_rgba(0,0,0,0.08)]">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary-container/10 rounded-lg text-primary-container">
+<span class="material-symbols-outlined text-[32px]">satellite_alt</span>
+</div>
+<span class="font-label-mono text-label-mono text-outline">DOM-02</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Advanced Remote Sensing</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Processing and analysis of high-resolution Earth observation data, including LiDAR, hyperspectral, and SAR imagery. We develop novel algorithms to monitor land-use changes, track environmental degradation, and assess urban infrastructure resilience over time.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-xs mt-auto">
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">LiDAR</span>
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Earth Observation</span>
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Hyperspectral</span>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant/30 flex justify-end">
+<a class="inline-flex items-center gap-xs font-body-md text-body-md font-medium text-primary hover:text-secondary transition-colors group" href="#">
+                        Learn More <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</article>
+<!-- Domain Card 3 -->
+<article class="bg-surface rounded-xl border border-outline-variant/50 p-lg flex flex-col gap-md shadow-[0_4px_40px_-4px_rgba(0,0,0,0.04)] card-hover-reveal transition-all hover:shadow-[0_8px_40px_-4px_rgba(0,0,0,0.08)]">
+<div class="flex justify-between items-start">
+<div class="p-sm bg-primary-container/10 rounded-lg text-primary-container">
+<span class="material-symbols-outlined text-[32px]">map</span>
+</div>
+<span class="font-label-mono text-label-mono text-outline">DOM-03</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-sm">Spatial Data Science</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                        Pioneering methodologies in spatial statistics, geocomputation, and spatial epidemiology. We analyze large-scale, heterogeneous datasets to uncover hidden spatial patterns, optimize resource allocation, and inform critical policy decisions in urban and regional planning.
+                    </p>
+</div>
+<div class="flex flex-wrap gap-xs mt-auto">
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Spatial Statistics</span>
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Geocomputation</span>
+<span class="px-xs py-[2px] border border-outline-variant rounded bg-surface-container-lowest text-label-mono font-label-mono text-on-surface-variant">Policy Informatics</span>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant/30 flex justify-end">
+<a class="inline-flex items-center gap-xs font-body-md text-body-md font-medium text-primary hover:text-secondary transition-colors group" href="#">
+                        Learn More <span class="material-symbols-outlined text-[18px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+</article>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-tertiary-container w-full py-lg border-t border-outline/20 mt-auto">
+<div class="flex flex-col md:flex-row justify-between items-start px-margin-desktop gap-md max-w-[1600px] mx-auto">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-md text-headline-md text-on-primary">GDSG</span>
+<span class="font-body-md text-body-md text-on-primary/70">© 2024 Geospatial Data Science Group. All rights reserved.</span>
+</div>
+<nav class="flex flex-col md:flex-row gap-md">
+<a class="font-body-md text-body-md text-on-primary/70 hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Institutional Access</a>
+<a class="font-body-md text-body-md text-on-primary/70 hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Open Data Policy</a>
+<a class="font-body-md text-body-md text-on-primary/70 hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Privacy Protocol</a>
+<a class="font-body-md text-body-md text-on-primary/70 hover:text-on-primary hover:opacity-80 transition-opacity" href="#">Contact Lab</a>
+</nav>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GDSG - Geospatial Data Science Group</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-dim": "#d8dadc",
+                        "on-primary-fixed-variant": "#1b503a",
+                        "on-background": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#9cd2b5",
+                        "secondary-container": "#fc5d4f",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "primary": "#002819",
+                        "tertiary-container": "#29394d",
+                        "on-secondary-container": "#610003",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-fixed-variant": "#38485d",
+                        "surface": "#f7f9fb",
+                        "on-primary-container": "#77ac90",
+                        "on-secondary-fixed": "#410001",
+                        "on-tertiary-fixed": "#0b1c30",
+                        "background": "#f7f9fb",
+                        "on-primary-fixed": "#002114",
+                        "primary-fixed-dim": "#9cd2b5",
+                        "on-secondary-fixed-variant": "#910b0b",
+                        "surface-tint": "#356850",
+                        "primary-container": "#06402b",
+                        "surface-container": "#eceef0",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-container": "#92a2bb",
+                        "tertiary-fixed": "#d3e4fe",
+                        "outline-variant": "#c0c9c1",
+                        "on-surface-variant": "#404943",
+                        "tertiary-fixed-dim": "#b7c8e1",
+                        "surface-bright": "#f7f9fb",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary": "#132337",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#b32821",
+                        "secondary-fixed": "#ffdad5",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "outline": "#717973",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#b8efd0",
+                        "surface-container-low": "#f2f4f6",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed-dim": "#ffb4aa",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "gutter": "24px",
+                        "xs": "4px",
+                        "margin-desktop": "64px",
+                        "lg": "48px",
+                        "xl": "80px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "md": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-mono": ["JetBrains Mono"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "label-mono": ["13px", { "lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["64px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .grid-bg {
+            background-image: radial-gradient(#e0e3e5 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md relative antialiased md:hidden">
+<!-- Background Coordinate Grid -->
+<div class="fixed inset-0 grid-bg pointer-events-none z-[-1] opacity-50"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-container/80 backdrop-blur-xl bg-surface-container/40 dark:bg-surface-container-highest/10 border-b border-outline-variant/30 shadow-sm backdrop-blur-md">
+<div class="flex justify-between items-center px-margin-mobile h-20 max-w-7xl mx-auto">
+<div class="flex items-center gap-xs cursor-pointer hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-all duration-300 scale-95 duration-200 ease-out rounded-lg p-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" style="font-variation-settings: 'FILL' 0;">language</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">GDSG</span>
+</div>
+<button class="font-label-mono text-label-mono text-on-surface-variant dark:text-on-tertiary-container hover:text-primary transition-colors hover:bg-surface-container-low/50 dark:hover:bg-surface-container-high/50 transition-all duration-300 scale-95 duration-200 ease-out px-sm py-xs rounded-full border border-outline-variant">
+                Contact
+            </button>
+</div>
+</header>
+<main class="pt-20 pb-xl">
+<!-- Hero Section -->
+<section class="relative h-[80vh] flex flex-col justify-end px-margin-mobile pb-xl overflow-hidden rounded-b-xl">
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="absolute inset-0 w-full h-full z-0 object-cover" -->
+<div class="absolute inset-0 w-full h-full z-0 object-cover" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+container.appendChild(renderer.domElement);
+
+// Geometry: A wireframe globe with data points
+const globeRadius = 2.5;
+const globeGeometry = new THREE.SphereGeometry(globeRadius, 64, 64);
+const globeMaterial = new THREE.MeshPhongMaterial({
+    color: 0x06402b,
+    wireframe: true,
+    transparent: true,
+    opacity: 0.2,
+});
+const globe = new THREE.Mesh(globeGeometry, globeMaterial);
+scene.add(globe);
+
+// Grid pattern on the globe
+const gridHelper = new THREE.PolarGridHelper(globeRadius * 1.1, 16, 8, 64);
+gridHelper.rotation.x = Math.PI / 2;
+gridHelper.material.transparent = true;
+gridHelper.material.opacity = 0.1;
+scene.add(gridHelper);
+
+// Floating data points (GeoAI points)
+const pointsCount = 200;
+const pointsGeometry = new THREE.BufferGeometry();
+const positions = new Float32Array(pointsCount * 3);
+
+for (let i = 0; i < pointsCount; i++) {
+    const phi = Math.acos(-1 + (2 * i) / pointsCount);
+    const theta = Math.sqrt(pointsCount * Math.PI) * phi;
+    
+    const x = globeRadius * Math.cos(theta) * Math.sin(phi);
+    const y = globeRadius * Math.sin(theta) * Math.sin(phi);
+    const z = globeRadius * Math.cos(phi);
+    
+    positions[i * 3] = x * (1 + Math.random() * 0.1);
+    positions[i * 3 + 1] = y * (1 + Math.random() * 0.1);
+    positions[i * 3 + 2] = z * (1 + Math.random() * 0.1);
+}
+
+pointsGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const pointsMaterial = new THREE.PointsMaterial({
+    color: 0x06402b,
+    size: 0.05,
+    transparent: true,
+    opacity: 0.8,
+});
+const points = new THREE.Points(pointsGeometry, pointsMaterial);
+scene.add(points);
+
+// Lights
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+camera.position.z = 6;
+
+// Mouse interaction
+let mouseX = 0;
+let mouseY = 0;
+window.addEventListener('mousemove', (event) => {
+    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+});
+
+function animate() {
+    requestAnimationFrame(animate);
+    
+    globe.rotation.y += 0.002;
+    points.rotation.y += 0.003;
+    
+    scene.rotation.y += (mouseX * 0.1 - scene.rotation.y) * 0.05;
+    scene.rotation.x += (mouseY * 0.1 - scene.rotation.x) * 0.05;
+    
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const newWidth = container.clientWidth || window.innerWidth;
+    const newHeight = container.clientHeight || window.innerHeight;
+    camera.aspect = newWidth / newHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(newWidth, newHeight);
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+<div class="relative z-10 glass-panel p-md rounded-xl shadow-lg border border-white/20 transform translate-y-4">
+<span class="inline-block px-sm py-xs mb-sm rounded-full bg-surface-dim text-primary font-label-mono text-label-mono uppercase tracking-wider text-xs">Research Group</span>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-sm leading-tight tracking-tight">Advancing Geospatial Intelligence</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-md max-w-md">Bridging AI and Earth observation to solve complex environmental challenges through rigorous spatial analysis.</p>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-mono text-label-mono hover:bg-primary-container transition-colors w-full flex justify-center items-center gap-xs">
+                    Explore Research <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Research Highlights -->
+<section class="px-margin-mobile py-xl">
+<div class="mb-lg flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-xs">Core Domains</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Methodological foundations</p>
+</div>
+</div>
+<div class="flex flex-col gap-md">
+<!-- Highlight 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-md shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
+<div class="flex items-start gap-md mb-sm">
+<div class="bg-surface-container-low p-sm rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl">psychology</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary text-lg">GeoAI</h3>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-xs">Deep Learning for Spatial Data</p>
+</div>
+</div>
+</div>
+<!-- Highlight 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-md shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary transform scale-y-0 group-hover:scale-y-100 transition-transform origin-top"></div>
+<div class="flex items-start gap-md mb-sm">
+<div class="bg-surface-container-low p-sm rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl">public</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary text-lg">Earth Observation</h3>
+<p class="font-label-mono text-label-mono text-on-surface-variant mt-xs">Satellite Imagery Analysis</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Projects -->
+<section class="px-margin-mobile py-xl bg-surface-container-low rounded-3xl mx-sm">
+<h2 class="font-headline-md text-headline-md text-primary mb-lg">Featured Projects</h2>
+<div class="flex flex-col gap-lg">
+<!-- Project 1 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm">
+<div class="h-48 bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A highly detailed satellite view of a coastal city, showcasing advanced remote sensing mapping techniques with digital grid overlays. The image is bright, highly structured, and technological, utilizing a modern, minimalist academic aesthetic with deep forest green accents against a light mode background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdWCkLrmZRwC7vtSJgF2hN2-FaJ5bigYoVMyss1n9QNpCdsGQyewMbtLs-AxcI5p3xkvIF53EdiUuy7rDNARYL2exx8D5Zc2FLN2fmf322kim8ibtCajw5NuheRCgq9npyG1xWjFFolZ8ZKkA3zARD3ROq1JxHqKxK-2VGKx8kpfVaXSb4mrgmlH16L2zCGI1igCWNAKzDtMWZ8FOnpbSiTf9d6Z5OGKvD3CTQXLOCZvTS1BKUcCdL"/>
+<div class="absolute top-sm right-sm bg-secondary text-on-secondary font-label-mono text-label-mono text-[10px] px-sm py-[2px] rounded-full uppercase tracking-widest shadow-sm">Grant Awarded</div>
+</div>
+<div class="p-md">
+<div class="font-label-mono text-label-mono text-outline mb-xs text-xs">2024-03-15</div>
+<h3 class="font-headline-md text-headline-md text-primary text-xl mb-sm leading-snug">Urban Heat Island Mitigation Modeling</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">Developing predictive spatial models to identify vulnerable urban corridors using multi-spectral thermal imaging.</p>
+</div>
+</article>
+<!-- Project 2 -->
+<article class="bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm">
+<div class="h-48 bg-surface-container-highest relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Abstract 3D visualization of topographic data points forming a neural network pattern over a mountainous terrain. The style is pristine, scientific, and high-tech, fitting a modern academic research lab. The color palette emphasizes clean whites, subtle grays, and precise deep forest green data nodes." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKpDEwJHdJXXiqeo9N8XMhJ4AwpGEZUI4to2_kT2EIrIJvi-ziZ4EsE6V9Mgz-nxPISF8puZSqUBOwM8OGVwiQMYrH3Z2jg1gUZ-87-1aOjO0hO2pb2uB_az-Cj1U307UCTTEA-ugwXrejJaQmo4z54kLVn2dKYj1lfT2Mmy_0JHQbO0I2EZhIZHvVbAjaBwwy0qA-8OtBh5QkjVxnAbQJlpls_56YWHMr9Zg6UaK0pfAtWNI8imDs"/>
+<div class="absolute top-sm right-sm bg-primary text-on-primary font-label-mono text-label-mono text-[10px] px-sm py-[2px] rounded-full uppercase tracking-widest shadow-sm">New</div>
+</div>
+<div class="p-md">
+<div class="font-label-mono text-label-mono text-outline mb-xs text-xs">2024-02-28</div>
+<h3 class="font-headline-md text-headline-md text-primary text-xl mb-sm leading-snug">Topological Neural Networks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2">A novel architecture for processing unstructured spatial graphs in terrain analysis.</p>
+</div>
+</article>
+</div>
+</section>
+<!-- Newsletter Signup -->
+<section class="px-margin-mobile py-xl my-xl">
+<div class="bg-primary text-on-primary rounded-2xl p-lg relative overflow-hidden">
+<div class="absolute -right-20 -top-20 opacity-10">
+<span class="material-symbols-outlined text-[200px]">hub</span>
+</div>
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md mb-xs text-on-primary">Research Updates</h2>
+<p class="font-body-md text-body-md mb-md text-on-primary/80">Quarterly publications and methodological insights.</p>
+<form class="flex flex-col gap-sm">
+<input class="bg-surface/10 border-0 border-b-2 border-on-primary/30 text-on-primary placeholder-on-primary/50 focus:ring-0 focus:border-on-primary font-body-md px-sm py-sm w-full transition-colors rounded-t-md" placeholder="academic@institution.edu" type="email"/>
+<button class="bg-on-primary text-primary px-md py-sm rounded-full font-label-mono text-label-mono mt-xs hover:bg-surface transition-colors" type="button">
+                            Subscribe
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary dark:bg-primary-container w-full border-t border-primary-fixed-dim/20 w-full py-xl px-margin-mobile grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="flex flex-col gap-lg">
+<div>
+<span class="font-headline-md text-headline-md text-on-primary font-headline-md text-headline-md text-on-primary tracking-tight">GDSG</span>
+<p class="font-label-mono text-label-mono text-on-primary/70 mt-sm max-w-xs">Advancing spatial science through computational rigor.</p>
+</div>
+<nav class="flex flex-col gap-md">
+<a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Research Ethics</a>
+<a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 transition-all duration-200" href="#">Contact Us</a>
+</nav>
+<div class="font-label-mono text-label-mono text-on-primary/50 text-xs mt-lg">
+                © 2024 Geospatial Data Science Group. All Rights Reserved.
+            </div>
+</div>
+</footer>
+</body></html>

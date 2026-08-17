@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GDSG Admin Dashboard</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#d8dadc",
+                      "on-primary-fixed-variant": "#1b503a",
+                      "on-background": "#191c1e",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-surface": "#2d3133",
+                      "inverse-primary": "#9cd2b5",
+                      "secondary-container": "#fc5d4f",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "primary": "#002819",
+                      "tertiary-container": "#29394d",
+                      "on-secondary-container": "#610003",
+                      "on-surface": "#191c1e",
+                      "on-tertiary-fixed-variant": "#38485d",
+                      "surface": "#f7f9fb",
+                      "on-primary-container": "#77ac90",
+                      "on-secondary-fixed": "#410001",
+                      "on-tertiary-fixed": "#0b1c30",
+                      "background": "#f7f9fb",
+                      "on-primary-fixed": "#002114",
+                      "primary-fixed-dim": "#9cd2b5",
+                      "on-secondary-fixed-variant": "#910b0b",
+                      "surface-tint": "#356850",
+                      "primary-container": "#06402b",
+                      "surface-container": "#eceef0",
+                      "surface-variant": "#e0e3e5",
+                      "on-tertiary-container": "#92a2bb",
+                      "tertiary-fixed": "#d3e4fe",
+                      "outline-variant": "#c0c9c1",
+                      "on-surface-variant": "#404943",
+                      "tertiary-fixed-dim": "#b7c8e1",
+                      "surface-bright": "#f7f9fb",
+                      "inverse-on-surface": "#eff1f3",
+                      "tertiary": "#132337",
+                      "surface-container-high": "#e6e8ea",
+                      "secondary": "#b32821",
+                      "secondary-fixed": "#ffdad5",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "outline": "#717973",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#b8efd0",
+                      "surface-container-low": "#f2f4f6",
+                      "error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#ffb4aa",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "gutter": "24px",
+                      "xs": "4px",
+                      "margin-desktop": "64px",
+                      "lg": "48px",
+                      "xl": "80px",
+                      "sm": "12px",
+                      "base": "8px",
+                      "md": "24px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg-mobile": [
+                              "Hanken Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-mono": [
+                              "JetBrains Mono"
+                      ],
+                      "display-lg": [
+                              "Hanken Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Hanken Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "display-lg": [
+                              "64px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        /* Custom coordinate background pattern */
+        .bg-coordinate-grid {
+            background-image: radial-gradient(circle, #e0e3e5 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+        
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        
+        /* Custom scrollbar for mobile drawers */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e0e3e5;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface bg-coordinate-grid min-h-screen flex flex-col md:flex-row relative selection:bg-primary-container selection:text-on-primary-container">
+<!-- Mobile Top App Bar (Replaces TopAppBar JSON structure for mobile admin context, keeping brand) -->
+<header class="md:hidden flex justify-between items-center px-margin-mobile h-16 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 sticky top-0 z-50">
+<div class="flex items-center gap-sm">
+<button aria-label="Open Menu" class="p-2 -ml-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors" id="mobileMenuBtn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">menu</span>
+</button>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">GDSG</span>
+</div>
+<div class="flex items-center gap-xs">
+<button aria-label="Notifications" class="p-2 text-on-surface-variant hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-secondary rounded-full"></span>
+</button>
+<img class="w-8 h-8 rounded-full border border-outline-variant object-cover ml-2" data-alt="A small circular avatar of an academic researcher with a neutral background. High-tech academic style, clean lighting, focus on professionalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPgkz0zi8ai5LzsTwwUEl_ceFjKH8Jf_1D6DmScQxgvtgIZPnG0qoxbxRC5lHAAthTFIicEysAlxiECfzlcNoRjndqE2HIBlJCs9-eVu4VdD3kBMkJzLlAYPnYfqZgmzdxJTptHZqtJXiZGF45NniSC9rh0tKAfEMhtu4j5-wRUsjyUTiCrlOSX75yoHMylXK6kov3HXLcvsnIMzLXqWWgXIw2sn9qGE0lcnzJB9flo8Sa5CYM_Je_"/>
+</div>
+</header>
+<!-- Navigation Drawer (Sidebar) -->
+<!-- JSON Blueprint: NavigationDrawer -->
+<nav class="fixed inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 w-80 bg-surface md:bg-transparent z-40 transition-transform duration-300 ease-in-out border-r border-outline-variant/30 md:border-none flex flex-col shadow-xl md:shadow-none" id="sideNav">
+<!-- Desktop Brand Header -->
+<div class="hidden md:flex items-center h-20 px-lg mb-4">
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">GDSG Admin</span>
+</div>
+<div class="flex-1 overflow-y-auto p-md md:pl-lg md:pr-4 space-y-8">
+<!-- NavigationDrawer Header -->
+<div class="mb-4">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-sm pl-2">Research Domains</h2>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-transform duration-300 ease-in-out font-body-md text-body-md font-medium group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant/70 group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">psychology</span>
+                            GeoAI
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-transform duration-300 ease-in-out font-body-md text-body-md font-medium group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant/70 group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">public</span>
+                            Earth Observation
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-transform duration-300 ease-in-out font-body-md text-body-md font-medium group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant/70 group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">menu_book</span>
+                            Publications
+                        </a>
+</li>
+<li>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-transform duration-300 ease-in-out font-body-md text-body-md font-medium group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant/70 group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">groups</span>
+                            Team
+                        </a>
+</li>
+<li>
+<!-- ACTIVE STATE LOGIC: Admin is active -->
+<a class="flex items-center gap-sm px-4 py-3 bg-primary-container text-on-primary-container rounded-lg font-bold font-body-md text-body-md transition-all duration-300 ease-in-out relative" href="#">
+<span class="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-secondary rounded-r-full"></span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+                            Admin
+                        </a>
+</li>
+</ul>
+</div>
+<div class="mb-4">
+<h2 class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-wider mb-sm pl-2">System</h2>
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-sm px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-lg hover:translate-x-1 transition-transform duration-300 ease-in-out font-body-md text-body-md font-medium group" href="#">
+<span class="material-symbols-outlined text-on-surface-variant/70 group-hover:text-primary transition-colors" style="font-variation-settings: 'FILL' 0;">settings</span>
+                            Settings
+                        </a>
+</li>
+</ul>
+</div>
+</div>
+<!-- Mobile Drawer Close Overlay -->
+<div class="fixed inset-0 bg-on-surface/20 backdrop-blur-sm z-[-1] hidden md:hidden" id="mobileOverlay"></div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-lg md:py-xl flex flex-col gap-lg z-10 relative">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-md">
+<div>
+<p class="font-label-mono text-label-mono text-on-surface-variant mb-xs">DASHBOARD OVERVIEW</p>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary tracking-tight">Admin Console</h1>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center justify-center gap-2 px-6 py-3 border border-outline bg-transparent hover:bg-surface-container-low text-on-surface font-label-mono text-label-mono rounded-full transition-colors">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">download</span>
+                    Export Data
+                </button>
+<button class="flex items-center justify-center gap-2 px-6 py-3 bg-primary text-on-primary font-label-mono text-label-mono rounded-full hover:bg-primary/90 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 0;">add</span>
+                    New Project
+                </button>
+</div>
+</div>
+<!-- Research Statistics (Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Stat Card 1 -->
+<div class="glass-panel p-md rounded-xl flex flex-col justify-between hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-primary-fixed/20 rounded-full blur-3xl group-hover:bg-primary-fixed/30 transition-colors"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div class="p-2 bg-surface-container rounded-lg border border-outline-variant/50">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">Active</span>
+</div>
+<div class="relative z-10">
+<p class="font-body-md text-body-md text-on-surface-variant mb-1">Active Projects</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-primary">14</span>
+<span class="font-label-mono text-label-mono text-surface-tint">+2 this quarter</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-panel p-md rounded-xl flex flex-col justify-between hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300 relative overflow-hidden group">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-tertiary-fixed-dim/20 rounded-full blur-3xl group-hover:bg-tertiary-fixed-dim/30 transition-colors"></div>
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div class="p-2 bg-surface-container rounded-lg border border-outline-variant/50">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant bg-surface-container-low px-2 py-1 rounded">YTD</span>
+</div>
+<div class="relative z-10">
+<p class="font-body-md text-body-md text-on-surface-variant mb-1">Publications</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">32</span>
+<span class="font-label-mono text-label-mono text-surface-tint">Trending ↑</span>
+</div>
+</div>
+</div>
+<!-- Stat Card 3 (Alert State) -->
+<div class="glass-panel p-md rounded-xl flex flex-col justify-between border-l-4 border-l-secondary hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] transition-shadow duration-300">
+<div class="flex justify-between items-start mb-lg">
+<div class="p-2 bg-error-container/50 rounded-lg border border-error/20">
+<span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+</div>
+<span class="font-label-mono text-label-mono text-secondary bg-secondary-fixed px-2 py-1 rounded flex items-center gap-1">
+<span class="w-1.5 h-1.5 bg-secondary rounded-full animate-pulse"></span> Live
+                    </span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-1">Total Citations</p>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-on-surface">1.2k</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Across all papers</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Complex Layout: Pending Pubs & Messages -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-md lg:gap-lg">
+<!-- Pending Publications (Takes up 2 cols on desktop) -->
+<section class="lg:col-span-2 flex flex-col gap-sm">
+<div class="flex justify-between items-center mb-sm border-b border-outline-variant/30 pb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Pending Publications</h2>
+<a class="font-label-mono text-label-mono text-surface-tint hover:underline decoration-surface-tint decoration-2 transition-all" href="#">View All</a>
+</div>
+<div class="space-y-4">
+<!-- Pub Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-md hover:-translate-y-1 hover:shadow-sm transition-all duration-300 relative group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity rounded-l-xl"></div>
+<div class="flex flex-col md:flex-row gap-md">
+<div class="md:w-3/4">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-mono text-label-mono text-secondary px-2 py-0.5 bg-secondary-fixed/50 rounded-sm">In Review</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• Nature Geoscience</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight">Spatiotemporal modeling of urban heat islands using deep learning frameworks</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">This paper introduces a novel transformer-based architecture for predicting localized temperature anomalies in high-density urban environments using satellite imagery.</p>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover z-20" data-alt="Small circular profile photo of a female researcher looking professional, light grey background, high-tech academic styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu0T7gqqmHep2SyeyozmjXaJNpvb8wpMTiPmTik3aEiD95bLAvh6mvEIGnEG7dlFjbgY6Ni1rB31ISQc6ZW8vUHS79vIZo2UoEOmndP6bHwWd2CbItB6SqZ_tLGfukivMeZrvJrxVzpIQOUblLh2YbOLfRFPHJdhfCyrOv5HI5i4fq-trYUn7daoWI0txJzu5OZbg_8AXnmeLq04TEZdoPLnYzF6mXB3ioKS871N3QZajTaTENYesl"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover z-10" data-alt="Small circular profile photo of a male researcher looking professional, light grey background, high-tech academic styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZIkyuKXUMtoGRsx1i1Y8bIRJe43_VJ6nvS-FU1LzlgQJfFzFwKco3uUHJnQE5jlbuu9R1w4YNnIeoKlVHgcwKoAy7aSr0ScwjlXzkZ4p48XHJuvz3WBIJf99ZJoES7o_TSpziYnb34wHK4ia3s-RnmJ5fOC3Zq72o2ReUky5bcZulrRmnyPTukuJvXJ3mcUb5HdNDTgItjJgEGTHF6ORHaHsU8qko8aOgn7wJPn2bzdirfSjIb2In"/>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Dr. E. Chen, Dr. M. Silva</span>
+</div>
+</div>
+<div class="md:w-1/4 flex flex-row md:flex-col justify-end gap-2 md:border-l md:border-outline-variant/30 md:pl-md">
+<button class="flex-1 px-4 py-2 bg-primary text-on-primary font-label-mono text-label-mono rounded-lg hover:bg-primary/90 transition-colors">Approve</button>
+<button class="flex-1 px-4 py-2 border border-outline text-on-surface font-label-mono text-label-mono rounded-lg hover:bg-surface-container-low transition-colors">Review</button>
+</div>
+</div>
+</article>
+<!-- Pub Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl p-md hover:-translate-y-1 hover:shadow-sm transition-all duration-300 relative group">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity rounded-l-xl"></div>
+<div class="flex flex-col md:flex-row gap-md">
+<div class="md:w-3/4">
+<div class="flex items-center gap-2 mb-2">
+<span class="font-label-mono text-label-mono text-on-surface-variant px-2 py-0.5 bg-surface-container-high rounded-sm">Draft</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">• ISPRS Journal</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2 leading-tight">Earth observation data fusion techniques for real-time deforestation tracking</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Evaluating the efficacy of multi-sensor data fusion (SAR and optical) in identifying small-scale illegal logging activities in the Amazon basin.</p>
+<div class="flex items-center gap-4">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface-container-lowest object-cover z-20" data-alt="Small circular profile photo of a male researcher looking professional, light grey background, high-tech academic styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpK0B3gz7hpXJUC6n97N2JlxY19eB63N0J2zRwAlZAEoUjE-b8GeP7KS5Gd2KMIUnSZNkQrBidaqGpGGQCXFS5p544I2NDtdHOcQ2Z1_WrLORUAmzVTZyHdvfYJOOkd-_sO8obsqMwoKGoA-HrTLgOJ8JTos25vah0xIfi2pJVhIEUHhollR9zxzinPYKsyinTJRESdaLHgL9R9O_aEkaxF1hPy4aqaFak3NUGzeN2S-MUU3Jh13XO"/>
+</div>
+<span class="font-label-mono text-label-mono text-on-surface-variant">J. Kowalski</span>
+</div>
+</div>
+<div class="md:w-1/4 flex flex-row md:flex-col justify-end gap-2 md:border-l md:border-outline-variant/30 md:pl-md">
+<button class="flex-1 px-4 py-2 border border-outline text-on-surface font-label-mono text-label-mono rounded-lg hover:bg-surface-container-low transition-colors text-center">Edit</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- Recent Messages Sidebar Component -->
+<section class="flex flex-col gap-sm">
+<div class="flex justify-between items-center mb-sm border-b border-outline-variant/30 pb-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Recent Messages</h2>
+</div>
+<div class="bg-surface-container-lowest border border-outline-variant/40 rounded-xl overflow-hidden shadow-sm">
+<ul class="divide-y divide-outline-variant/20">
+<!-- Message 1 -->
+<li class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim text-on-tertiary-container flex items-center justify-center font-headline-md text-headline-md shrink-0">
+                                    EC
+                                </div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<p class="font-body-md text-body-md font-medium text-on-surface truncate">Dr. E. Chen</p>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">10:42 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-sm">Review requested for the updated spatial models...</p>
+</div>
+</div>
+</li>
+<!-- Message 2 -->
+<li class="p-4 bg-primary-fixed/10 hover:bg-primary-fixed/20 transition-colors cursor-pointer border-l-2 border-primary group">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed text-on-secondary-container flex items-center justify-center font-headline-md text-headline-md shrink-0">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<p class="font-body-md text-body-md font-medium text-on-surface truncate">System Alert</p>
+<span class="font-label-mono text-label-mono text-secondary font-bold shrink-0">09:15 AM</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-sm">Compute cluster allocation exceeded for GeoAI run.</p>
+</div>
+</div>
+</li>
+<!-- Message 3 -->
+<li class="p-4 hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface-variant flex items-center justify-center font-headline-md text-headline-md shrink-0">
+                                    MS
+                                </div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-baseline mb-1">
+<p class="font-body-md text-body-md font-medium text-on-surface truncate">Dr. M. Silva</p>
+<span class="font-label-mono text-label-mono text-on-surface-variant shrink-0">Yesterday</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant truncate text-sm">Data export complete. Shared folder updated.</p>
+</div>
+</div>
+</li>
+</ul>
+<a class="block w-full p-3 text-center border-t border-outline-variant/20 font-label-mono text-label-mono text-primary hover:bg-surface-container-low transition-colors" href="#">
+                        View Inbox
+                    </a>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<!-- JSON Blueprint: Footer -->
+<!-- Note: Footer usually placed at bottom of nav/main layout -->
+<footer class="w-full bg-primary text-on-primary py-xl px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-4 gap-gutter border-t border-primary-fixed-dim/20 z-10 mt-auto">
+<div class="md:col-span-1">
+<span class="font-headline-md text-headline-md text-on-primary font-bold tracking-tight mb-4 block">GDSG Admin</span>
+<p class="font-label-mono text-label-mono text-on-primary/70">Internal research management console.</p>
+</div>
+<div class="md:col-span-3 flex flex-col md:flex-row justify-end gap-md md:gap-lg items-start md:items-center">
+<ul class="flex flex-col md:flex-row gap-4">
+<li><a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 duration-200" href="#">Privacy Policy</a></li>
+<li><a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 duration-200" href="#">Terms of Service</a></li>
+<li><a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 duration-200" href="#">Research Ethics</a></li>
+<li><a class="font-label-mono text-label-mono text-on-primary/70 hover:text-on-primary transition-colors hover:underline decoration-secondary decoration-2 duration-200" href="#">Contact Us</a></li>
+</ul>
+<p class="font-label-mono text-label-mono text-on-primary/50 md:border-l md:border-primary-fixed-dim/20 md:pl-lg">
+                © 2024 Geospatial Data Science Group. All Rights Reserved.
+            </p>
+</div>
+</footer>
+<!-- Interactive Script for Mobile Menu -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const sideNav = document.getElementById('sideNav');
+            const mobileOverlay = document.getElementById('mobileOverlay');
+
+            function toggleMenu() {
+                const isOpen = !sideNav.classList.contains('-translate-x-full');
+                
+                if (isOpen) {
+                    sideNav.classList.add('-translate-x-full');
+                    mobileOverlay.classList.add('hidden');
+                } else {
+                    sideNav.classList.remove('-translate-x-full');
+                    mobileOverlay.classList.remove('hidden');
+                }
+            }
+
+            if (mobileMenuBtn && sideNav && mobileOverlay) {
+                mobileMenuBtn.addEventListener('click', toggleMenu);
+                mobileOverlay.addEventListener('click', toggleMenu);
+            }
+        });
+    </script>
+</body></html>

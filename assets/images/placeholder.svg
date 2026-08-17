@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-labelledby="placeholderTitle placeholderDesc" preserveAspectRatio="xMidYMid slice">
+  <title id="placeholderTitle">Placeholder image</title>
+  <desc id="placeholderDesc">A neutral gray placeholder graphic used while the site image assets are pending.</desc>
+  <rect width="800" height="600" fill="#f2f4f6"/>
+  <rect x="80" y="80" width="640" height="440" fill="#d8dadc" rx="24"/>
+  <path d="M200 360h400" stroke="#c0c9c1" stroke-width="24" stroke-linecap="round"/>
+  <path d="M200 280h400" stroke="#c0c9c1" stroke-width="24" stroke-linecap="round"/>
+  <path d="M200 200h400" stroke="#c0c9c1" stroke-width="24" stroke-linecap="round"/>
+</svg>

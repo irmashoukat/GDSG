@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GDSG is a research institute focused on GIS, GeoAI, remote sensing, spatial analytics, and Earth observation.">
+    <meta property="og:title" content="Geospatial Data Science Group">
+    <meta property="og:description" content="GDSG is a research institute focused on GIS, GeoAI, remote sensing, spatial analytics, and Earth observation.">
+    <meta property="og:type" content="website">
+    <meta name="author" content="Geospatial Data Science Group">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hanken+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <title>Projects | Geospatial Data Science Group</title>
+</head>
+<body class="site-shell">
+    <div class="scroll-progress"></div>
+<header class="site-header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent container py-3">
+        <a class="navbar-brand" href="index.php" aria-label="Go to GDSG homepage" title="GDSG homepage">
+            <img src="/logo.jpeg" alt="GDSG logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#siteNavbar" aria-controls="siteNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="siteNavbar">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="research.php">Research</a></li>
+                <li class="nav-item"><a class="nav-link active" href="projects.php">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="publications.php">Publications</a></li>
+                <li class="nav-item"><a class="nav-link" href="partners.php">Partners</a></li>
+                <li class="nav-item"><a class="nav-link" href="team.php">Team</a></li>
+                <li class="nav-item"><a class="nav-link" href="news.php">News</a></li>
+            </ul>
+            <a class="btn navbar-contact d-none d-lg-inline-flex" href="contact.php">Contact</a>
+        </div>
+    </nav>
+</header>
+<main>
+<section class="projects-page py-5">
+    <div class="container">
+        <div class="projects-intro row align-items-end gy-4">
+            <div class="col-lg-8">
+                <span class="section-kicker">Ongoing research portfolio</span>
+                <h1 class="display-6 fw-bold">Projects by GDSD</h1>
+                <p class="lead text-muted mb-0">Three active platforms turning environmental, geospatial, and agricultural data into practical intelligence for Pakistan.</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="projects-intro__note">Status <strong>All projects ongoing</strong></div>
+            </div>
+        </div>
+        <div class="row g-4 mt-5 stagger">
+                                                    <div class="col-md-6 col-xl-4">
+                        <article class="card project-card project-card--urban-heat-island-mitigation h-100 tilt-card">
+                            <a href="project_detail.php?id=1" class="project-card__media project-card__media--urban-heat-island-mitigation" aria-label="Open project detail" >
+                                <span class="project-visual__label">Project</span>
+                                <span class="project-visual__metric">Ongoing</span>
+                            </a>
+                            <div class="project-card__body">
+                                <span class="project-pill">Ongoing</span>
+                                <h2>Urban Heat Island Mitigation Modeling</h2>
+                                <p class="text-muted">
+Fatal error: Uncaught Error: Call to undefined function mb_substr() in C:\Users\hp\Desktop\GDSG\projects.php:45
+Stack trace:
+#0 {main}
+  thrown in C:\Users\hp\Desktop\GDSG\projects.php on line 45
+php : PHP Fatal error:  Uncaught Error: Call to undefined function mb_substr() in C:\Users\hp\Desktop\GDSG\projects.php:45
+At line:1 char:1
++ php projects.php 2>&1 | Out-String -Width 300 | Set-Content error_out ...
++ ~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (PHP Fatal error...    projects.php:45:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Stack trace:
+#0 {main}
+  thrown in C:\Users\hp\Desktop\GDSG\projects.php on line 45
+
