@@ -28,6 +28,37 @@
      2) Scroll-triggered reveals (.reveal, with .stagger groups)
      --------------------------------------------------------- */
   (function reveals() {
+    var splitHeadings = document.querySelectorAll('body.site-shell main h1:not(.publications-title), body.site-shell main h2, body.site-shell main h3');
+    splitHeadings.forEach(function (heading) {
+      if (heading.dataset.splitReady === 'true') return;
+
+      var words = heading.textContent.trim().split(/\s+/);
+      heading.textContent = '';
+      heading.classList.add('split-heading');
+      heading.dataset.splitReady = 'true';
+
+      words.forEach(function (word, wordIndex) {
+        var wordWrap = document.createElement('span');
+        wordWrap.className = 'split-heading__word';
+        word.split('').forEach(function (letter, letterIndex) {
+          var letterWrap = document.createElement('span');
+          letterWrap.className = 'split-heading__char';
+          letterWrap.textContent = letter;
+          letterWrap.style.setProperty('--char-index', wordIndex * 10 + letterIndex);
+          wordWrap.appendChild(letterWrap);
+        });
+        heading.appendChild(wordWrap);
+        if (wordIndex < words.length - 1) heading.appendChild(document.createTextNode(' '));
+      });
+    });
+
+    var automaticTargets = document.querySelectorAll(
+      '.section-heading, .section-heading--split, .info-card, .project-card, .news-card, .image-card, .card-soft, .gdo-heading, .gdo-panel, .gdo-report, .gdo-newsletter, .site-footer .footer-column'
+    );
+    automaticTargets.forEach(function (el) {
+      el.classList.add('reveal');
+    });
+
     var groups = document.querySelectorAll('.stagger');
     groups.forEach(function (group) {
       Array.prototype.forEach.call(group.children, function (child, i) {
@@ -36,7 +67,7 @@
       });
     });
 
-    var targets = document.querySelectorAll('.reveal');
+    var targets = document.querySelectorAll('.reveal, .split-heading');
     if (!targets.length) return;
 
     if (reduceMotion || typeof IntersectionObserver === 'undefined') {

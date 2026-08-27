@@ -225,7 +225,7 @@ require __DIR__ . '/includes/header.php';
   /* ============ INSTRUMENT PANELS (core domains) ============ */
   .gdo-panel {
     position: relative; background: rgba(31, 91, 76, 0.88); border: 1px solid var(--gdo-line);
-    padding: 2.1rem 1.9rem 1.8rem; height: 100%; opacity: 1; transform: none;
+    padding: 2.1rem 1.9rem 1.8rem; height: 100%;
   }
   .gdo-panel::before, .gdo-panel::after {
     content: ''; position: absolute; width: 16px; height: 16px; border-color: var(--gdo-line-bright); border-style: solid; border-width: 0;
@@ -241,7 +241,7 @@ require __DIR__ . '/includes/header.php';
   .gdo-panel p { font-family: var(--gdo-font-body); color: var(--gdo-muted); font-size: 0.95rem; line-height: 1.6; }
 
   /* ============ FIELD REPORT CARDS (projects) ============ */
-  .gdo-report { background: rgba(31, 91, 76, 0.88); border: 1px solid var(--gdo-line); overflow: hidden; height: 100%; opacity: 1; transform: none; }
+  .gdo-report { background: rgba(31, 91, 76, 0.88); border: 1px solid var(--gdo-line); overflow: hidden; height: 100%; }
   .gdo-report__media-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; }
   .gdo-report__media { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85) contrast(1.05); transition: transform 0.6s ease, filter 0.6s ease; }
   .gdo-report:hover .gdo-report__media { transform: scale(1.045); filter: saturate(1.05) contrast(1.08); }
@@ -266,7 +266,6 @@ require __DIR__ . '/includes/header.php';
   .gdo-newsletter {
     display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;
     border: 1px solid rgba(115, 174, 192, 0.7); padding: 2.6rem 2.8rem; position: relative; background: #dff2f7;
-    opacity: 1; transform: none;
   }
   .gdo-newsletter::before {
     content: 'SIG // DIGEST'; position: absolute; top: -0.6rem; left: 2rem; background: var(--gdo-bg);
@@ -309,7 +308,7 @@ require __DIR__ . '/includes/header.php';
               <span>Global Data Observatory Active</span>
             </div>
             <h1>Advancing Geospatial Intelligence</h1>
-            <p>Bridging artificial intelligence and Earth observation to decode complex spatial dynamics, model environmental shifts, and engineer sustainable urban futures through rigorous scientific inquiry.</p>
+            <p class="gdo-hero__description"><span class="gdo-hero__description-track"><span>Bridging artificial intelligence and Earth observation to decode complex spatial dynamics, model environmental shifts, and engineer sustainable urban futures through rigorous scientific inquiry.</span><span aria-hidden="true">Bridging artificial intelligence and Earth observation to decode complex spatial dynamics, model environmental shifts, and engineer sustainable urban futures through rigorous scientific inquiry.</span></span></p>
             <div class="hero-actions">
               <a href="research.php" class="gdo-btn gdo-btn--solid">Explore Research</a>
               <a href="publications.php" class="gdo-btn gdo-btn--solid">View Publications</a>
@@ -326,28 +325,28 @@ require __DIR__ . '/includes/header.php';
     <div class="container">
       <div class="gdo-heading" style="margin-bottom: 3rem;">
         <span class="gdo-heading__eyebrow">01 — Core Domains</span>
-        <h2>Methodological foundations for spatial intelligence</h2>
+        <h2 class="split-heading-target">Methodological foundations for spatial intelligence</h2>
       </div>
       <div class="row g-4 stagger">
         <div class="col-lg-4">
           <article class="gdo-panel">
             <span class="gdo-panel__signal">Signal // GeoAI Forecasting</span>
             <h3 class="geoai-domain-title">GeoAI &amp; Predictive Modeling</h3>
-            <p>Building machine-learning workflows for AQI forecasting, pollution-source attribution, and spatiotemporal risk prediction using environmental and geospatial data.</p>
+            <p class="gdo-panel__description"><span class="gdo-panel__description-track"><span>Building machine-learning workflows for AQI forecasting, pollution-source attribution, and spatiotemporal risk prediction using environmental and geospatial data.</span><span aria-hidden="true">Building machine-learning workflows for AQI forecasting, pollution-source attribution, and spatiotemporal risk prediction using environmental and geospatial data.</span></span></p>
           </article>
         </div>
         <div class="col-lg-4">
           <article class="gdo-panel">
             <span class="gdo-panel__signal">Signal // EO Monitoring</span>
             <h3 class="blue-domain-title">Earth Observation &amp; Remote Sensing</h3>
-            <p>Integrating satellite, aerial, and sensor data to monitor land-use change, environmental stress, and climate-sensitive conditions across regions.</p>
+            <p class="gdo-panel__description"><span class="gdo-panel__description-track"><span>Integrating satellite, aerial, and sensor data to monitor land-use change, environmental stress, and climate-sensitive conditions across regions.</span><span aria-hidden="true">Integrating satellite, aerial, and sensor data to monitor land-use change, environmental stress, and climate-sensitive conditions across regions.</span></span></p>
           </article>
         </div>
         <div class="col-lg-4">
           <article class="gdo-panel">
             <span class="gdo-panel__signal">Signal // Spatial Infrastructure</span>
             <h3 class="blue-domain-title">Spatial Analytics &amp; Location Intelligence</h3>
-            <p>Developing geospatial pipelines for addressing, administrative hierarchy, and multi-scale analysis to support planning, service delivery, and evidence-based decisions.</p>
+            <p class="gdo-panel__description"><span class="gdo-panel__description-track"><span>Developing geospatial pipelines for addressing, administrative hierarchy, and multi-scale analysis to support planning, service delivery, and evidence-based decisions.</span><span aria-hidden="true">Developing geospatial pipelines for addressing, administrative hierarchy, and multi-scale analysis to support planning, service delivery, and evidence-based decisions.</span></span></p>
           </article>
         </div>
       </div>
@@ -373,7 +372,7 @@ require __DIR__ . '/includes/header.php';
             </div>
             <div class="gdo-report__body">
               <h3 class="blue-domain-title">Smog Monitoring &amp; AQI Forecasting System</h3>
-              <p>An environmental intelligence platform that monitors pollution across Punjab, explains district-level sources, and forecasts future smog conditions.</p>
+              <p class="gdo-report__description"><span class="gdo-report__description-track"><span>An environmental intelligence platform that monitors pollution across Punjab, explains district-level sources, and forecasts future smog conditions.</span><span aria-hidden="true">An environmental intelligence platform that monitors pollution across Punjab, explains district-level sources, and forecasts future smog conditions.</span></span></p>
               <a href="project.php?project=smog">View project details →</a>
             </div>
           </article>
@@ -386,7 +385,7 @@ require __DIR__ . '/includes/header.php';
             </div>
             <div class="gdo-report__body">
               <h3 class="blue-domain-title">HumMuqaam – Intelligent Geospatial Addressing System</h3>
-              <p>A national-scale digital location framework that converts administrative boundaries, addresses, and hierarchical grid cells into precise D-Codes.</p>
+              <p class="gdo-report__description"><span class="gdo-report__description-track"><span>A national-scale digital location framework that converts administrative boundaries, addresses, and hierarchical grid cells into precise D-Codes.</span><span aria-hidden="true">A national-scale digital location framework that converts administrative boundaries, addresses, and hierarchical grid cells into precise D-Codes.</span></span></p>
               <a href="project.php?project=hummuqaam">View project details →</a>
             </div>
           </article>
@@ -399,7 +398,7 @@ require __DIR__ . '/includes/header.php';
             </div>
             <div class="gdo-report__body">
               <h3 class="blue-domain-title">Crop Library</h3>
-              <p>A searchable agricultural knowledge platform for structured crop profiles, field practices, environmental requirements, and evidence-led decisions.</p>
+              <p class="gdo-report__description"><span class="gdo-report__description-track"><span>A searchable agricultural knowledge platform for structured crop profiles, field practices, environmental requirements, and evidence-led decisions.</span><span aria-hidden="true">A searchable agricultural knowledge platform for structured crop profiles, field practices, environmental requirements, and evidence-led decisions.</span></span></p>
               <a href="project.php?project=crop-library">View project details →</a>
             </div>
           </article>

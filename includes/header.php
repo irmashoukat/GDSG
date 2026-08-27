@@ -16,7 +16,7 @@ $config = require __DIR__ . '/config.php';
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Hanken+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <link rel="stylesheet" href="<?php echo asset_url('assets/css/main.css'); ?>">
+    <link rel="stylesheet" href="<?php echo asset_url('assets/css/main.css'); ?>?v=20260827-heading">
     <title><?php echo get_page_title($pageTitle ?? ''); ?></title>
 </head>
 <body class="site-shell">
