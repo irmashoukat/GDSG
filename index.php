@@ -276,9 +276,218 @@ require __DIR__ . '/includes/header.php';
   .gdo-newsletter .gdo-btn--solid { background: #c94343; border-color: #c94343; color: #ffffff; }
   .gdo-newsletter .gdo-btn--solid:hover { background: #a93232; border-color: #a93232; color: #ffffff; }
 
+  /* ============ Featured Projects Carousel ============ */
+  .projects-carousel-wrapper {
+    margin-top: 2.5rem;
+  }
+
+  .projects-carousel-container {
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .projects-carousel-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+  }
+
+  .projects-carousel-slide {
+    flex: 0 0 calc(33.333% - 1.333rem);
+    min-width: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .projects-carousel-slide {
+      flex: 0 0 calc(50% - 1rem);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects-carousel-slide {
+      flex: 0 0 100%;
+    }
+  }
+
+  .projects-carousel-slide .gdo-report {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .projects-carousel-slide .gdo-report:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-4px);
+  }
+
+  .projects-carousel-slide .gdo-report__media-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 66.67%;
+    overflow: hidden;
+    background: #0a0e27;
+  }
+
+  .projects-carousel-slide .gdo-report__media {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .projects-carousel-slide .gdo-report__scanline {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  .projects-carousel-slide .gdo-report__body {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projects-carousel-slide .gdo-report__description {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .projects-carousel-slide .gdo-report__description-track {
+    display: inline-flex;
+    align-items: center;
+    width: max-content;
+    white-space: nowrap;
+    animation: scroll 14s linear infinite;
+    will-change: transform;
+  }
+
+  .projects-carousel-slide .gdo-report__description-track span {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding-right: 2rem;
+  }
+
+  .projects-carousel-slide .gdo-report__body h3 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .projects-carousel-slide .gdo-report__body p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .projects-carousel-slide .gdo-report__body a {
+    color: #00d9ff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .projects-carousel-slide .gdo-report__body a:hover {
+    color: #00f0ff;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Carousel Controls */
+  .projects-carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  .projects-carousel-nav {
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .projects-carousel-nav:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .projects-carousel-nav:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .projects-carousel-dots {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .projects-carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .projects-carousel-dot.active {
+    background: #00d9ff;
+    border-color: #00d9ff;
+  }
+
+  .projects-carousel-dot:hover {
+    border-color: #00d9ff;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .gdo-panel, .gdo-report, .gdo-newsletter { opacity: 1 !important; transform: none !important; }
     .hero-badge__dot, .gdo-scroll-cue__line { animation: none; }
+    .gdo-carousel-track { transition: none; }
   }
 </style>
 
@@ -363,45 +572,259 @@ require __DIR__ . '/includes/header.php';
         </div>
         <a href="projects.php" class="gdo-btn gdo-btn--ghost">View all projects</a>
       </div>
-      <div class="row g-4 stagger">
-        <div class="col-md-6 col-lg-4">
-          <article class="gdo-report">
-            <div class="gdo-report__media-wrap">
-              <img src="Project_images/smog_image.jpg" alt="Punjab air quality forecast map" class="gdo-report__media">
-              <div class="gdo-report__scanline"></div>
+
+      <!-- CAROUSEL WRAPPER -->
+      <div class="projects-carousel-wrapper">
+        <div class="projects-carousel-container">
+          <div class="projects-carousel-track" id="projectsCarouselTrack">
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Agriculture Extension Services Through Geofencing.jpg" alt="Agriculture Extension Services" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Agriculture Extension Services Through Geofencing</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Location-based agricultural advisory system delivering targeted guidance to farmers using geofencing technology.</span><span aria-hidden="true">Location-based agricultural advisory system delivering targeted guidance to farmers using geofencing technology.</span></span></p>
+                </div>
+              </article>
             </div>
-            <div class="gdo-report__body">
-              <h3 class="blue-domain-title">Smog Monitoring &amp; AQI Forecasting System</h3>
-              <p class="gdo-report__description"><span class="gdo-report__description-track"><span>An environmental intelligence platform that monitors pollution across Punjab, explains district-level sources, and forecasts future smog conditions.</span><span aria-hidden="true">An environmental intelligence platform that monitors pollution across Punjab, explains district-level sources, and forecasts future smog conditions.</span></span></p>
-              <a href="project.php?project=smog">View project details →</a>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/BOINC-Based Crop Classification Using Sentinel Data.jpg" alt="Crop Classification" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">BOINC-Based Crop Classification Using Sentinel Data</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Distributed computing platform for automated crop classification using satellite imagery and machine learning.</span><span aria-hidden="true">Distributed computing platform for automated crop classification using satellite imagery and machine learning.</span></span></p>
+                </div>
+              </article>
             </div>
-          </article>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/CORONA.jpg" alt="CORONA Project" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">CORONA Project</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Historical satellite imagery analysis project for long-term geospatial research and archival documentation.</span><span aria-hidden="true">Historical satellite imagery analysis project for long-term geospatial research and archival documentation.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Crop Health Monitoring and Yield Estimation.jpg" alt="Crop Health Monitoring" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Crop Health Monitoring and Yield Estimation</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Remote sensing-based crop health assessment and yield prediction for agricultural planning and optimization.</span><span aria-hidden="true">Remote sensing-based crop health assessment and yield prediction for agricultural planning and optimization.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Enhanced Flood Forecasting System – Punjab.jpg" alt="Flood Forecasting" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Enhanced Flood Forecasting System – Punjab</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Advanced hydrological modeling for early flood detection and disaster risk reduction in Punjab region.</span><span aria-hidden="true">Advanced hydrological modeling for early flood detection and disaster risk reduction in Punjab region.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/EVACCS Project – Punjab and Khyber Pakhtunkhwa.jpg" alt="EVACCS Project" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">EVACCS Project – Punjab and Khyber Pakhtunkhwa</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Environmental vulnerability assessment and climate change adaptation strategy across provincial boundaries.</span><span aria-hidden="true">Environmental vulnerability assessment and climate change adaptation strategy across provincial boundaries.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Forest Cover Mapping – Bago Region, Myanmar.jpg" alt="Forest Cover Mapping" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Forest Cover Mapping – Bago Region, Myanmar</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>International collaboration for forest resource monitoring and biodiversity assessment in Southeast Asia.</span><span aria-hidden="true">International collaboration for forest resource monitoring and biodiversity assessment in Southeast Asia.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Google GTFS Journey Planner.jpg" alt="Journey Planner" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Google GTFS Journey Planner</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Public transport routing and scheduling system enabling seamless mobility planning for urban commuters.</span><span aria-hidden="true">Public transport routing and scheduling system enabling seamless mobility planning for urban commuters.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/GREEN AI Project at NASTP.jpg" alt="GREEN AI Project" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">GREEN AI Project at NASTP</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Artificial intelligence applications for environmental monitoring and sustainable technology development.</span><span aria-hidden="true">Artificial intelligence applications for environmental monitoring and sustainable technology development.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/HUM-MUQQAM Addressing System – Pakistan.jpg" alt="HUM-MUQQAM System" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">HUM-MUQQAM Addressing System – Pakistan</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>National digital addressing framework for efficient service delivery and spatial infrastructure planning.</span><span aria-hidden="true">National digital addressing framework for efficient service delivery and spatial infrastructure planning.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Pakistan Air Force Flood Mapping for Rescue Operations.jpg" alt="PAF Flood Mapping" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Pakistan Air Force Flood Mapping for Rescue Operations</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Real-time geospatial intelligence for emergency response and humanitarian rescue during flood disasters.</span><span aria-hidden="true">Real-time geospatial intelligence for emergency response and humanitarian rescue during flood disasters.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Pakistan Air Force Land-Management Project.jpg" alt="PAF Land-Management" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Pakistan Air Force Land-Management Project</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Strategic land resource management and asset inventory using advanced geospatial technology.</span><span aria-hidden="true">Strategic land resource management and asset inventory using advanced geospatial technology.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/PASBAN Application and e-Ticketing – National Highways & Motorway Police.jpg" alt="PASBAN e-Ticketing" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">PASBAN e-Ticketing – National Highways & Motorway Police</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Integrated traffic management and electronic enforcement system for highway safety and compliance.</span><span aria-hidden="true">Integrated traffic management and electronic enforcement system for highway safety and compliance.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Polio Mapping – Punjab and Balochistan.jpg" alt="Polio Mapping" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Polio Mapping – Punjab and Balochistan</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Spatial analysis for disease surveillance and vaccination campaign optimization in endemic regions.</span><span aria-hidden="true">Spatial analysis for disease surveillance and vaccination campaign optimization in endemic regions.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Property Digitisation Using GIS – Chaklala Scheme, Rawalpindi.jpg" alt="Property Digitisation" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Property Digitisation Using GIS – Chaklala Scheme, Rawalpindi</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Digital land registry and property mapping for transparent real estate management and urban development.</span><span aria-hidden="true">Digital land registry and property mapping for transparent real estate management and urban development.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/RCT-Based Survey Project – ITU Pakistan and Liberia.jpg" alt="RCT Survey Project" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">RCT-Based Survey Project – ITU Pakistan and Liberia</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Randomized controlled trials using geospatial data for evidence-based development research across continents.</span><span aria-hidden="true">Randomized controlled trials using geospatial data for evidence-based development research across continents.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Smog Prediction System – Punjab, Pakistan.jpg" alt="Smog Prediction" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Smog Prediction System – Punjab, Pakistan</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Advanced air quality forecasting using machine learning for public health and environmental protection.</span><span aria-hidden="true">Advanced air quality forecasting using machine learning for public health and environmental protection.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Sugarcane Land Suitability Assessment – Punjab.jpg" alt="Sugarcane Assessment" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Sugarcane Land Suitability Assessment – Punjab</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Geospatial analysis for optimal sugarcane cultivation regions and sustainable crop planning strategies.</span><span aria-hidden="true">Geospatial analysis for optimal sugarcane cultivation regions and sustainable crop planning strategies.</span></span></p>
+                </div>
+              </article>
+            </div>
+            <div class="projects-carousel-slide">
+              <article class="gdo-report">
+                <div class="gdo-report__media-wrap">
+                  <img src="all project images/Waseela-e-Taleem – Benazir Income Support Programme.jpg" alt="Waseela-e-Taleem" class="gdo-report__media">
+                  <div class="gdo-report__scanline"></div>
+                </div>
+                <div class="gdo-report__body">
+                  <h3 class="blue-domain-title">Waseela-e-Taleem – Benazir Income Support Programme</h3>
+                  <p class="gdo-report__description"><span class="gdo-report__description-track"><span>Geospatial targeting for education program delivery and poverty alleviation in underserved communities.</span><span aria-hidden="true">Geospatial targeting for education program delivery and poverty alleviation in underserved communities.</span></span></p>
+                </div>
+              </article>
+            </div>
+          </div>
         </div>
-        <div class="col-md-6 col-lg-4">
-          <article class="gdo-report">
-            <div class="gdo-report__media-wrap">
-              <img src="Project_images/HumMuqam_image.jpg" alt="Location intelligence map" class="gdo-report__media">
-              <div class="gdo-report__scanline"></div>
-            </div>
-            <div class="gdo-report__body">
-              <h3 class="blue-domain-title">HumMuqaam – Intelligent Geospatial Addressing System</h3>
-              <p class="gdo-report__description"><span class="gdo-report__description-track"><span>A national-scale digital location framework that converts administrative boundaries, addresses, and hierarchical grid cells into precise D-Codes.</span><span aria-hidden="true">A national-scale digital location framework that converts administrative boundaries, addresses, and hierarchical grid cells into precise D-Codes.</span></span></p>
-              <a href="project.php?project=hummuqaam">View project details →</a>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-6 col-lg-4">
-          <article class="gdo-report">
-            <div class="gdo-report__media-wrap">
-              <img src="Project_images/crop_library_image.jpg" alt="Crop library image" class="gdo-report__media">
-              <div class="gdo-report__scanline"></div>
-            </div>
-            <div class="gdo-report__body">
-              <h3 class="blue-domain-title">Crop Library</h3>
-              <p class="gdo-report__description"><span class="gdo-report__description-track"><span>A searchable agricultural knowledge platform for structured crop profiles, field practices, environmental requirements, and evidence-led decisions.</span><span aria-hidden="true">A searchable agricultural knowledge platform for structured crop profiles, field practices, environmental requirements, and evidence-led decisions.</span></span></p>
-              <a href="project.php?project=crop-library">View project details →</a>
-            </div>
-          </article>
+        
+        <!-- CAROUSEL CONTROLS -->
+        <div class="projects-carousel-controls">
+          <button class="projects-carousel-nav projects-carousel-nav--prev" id="projectsCarouselPrev" aria-label="Previous projects">
+            <span>←</span>
+          </button>
+          <div class="projects-carousel-dots" id="projectsCarouselDots">
+            <button class="projects-carousel-dot active" data-slide="0" aria-label="Projects 1-3"></button>
+            <button class="projects-carousel-dot" data-slide="1" aria-label="Projects 4-6"></button>
+            <button class="projects-carousel-dot" data-slide="2" aria-label="Projects 7-9"></button>
+            <button class="projects-carousel-dot" data-slide="3" aria-label="Projects 10-12"></button>
+            <button class="projects-carousel-dot" data-slide="4" aria-label="Projects 13-15"></button>
+            <button class="projects-carousel-dot" data-slide="5" aria-label="Projects 16-18"></button>
+            <button class="projects-carousel-dot" data-slide="6" aria-label="Projects 19"></button>
+          </div>
+          <button class="projects-carousel-nav projects-carousel-nav--next" id="projectsCarouselNext" aria-label="Next projects">
+            <span>→</span>
+          </button>
         </div>
       </div>
     </div>
@@ -420,6 +843,147 @@ require __DIR__ . '/includes/header.php';
   </section>
 
 </div>
+
+<!-- ============================================================
+     PROJECTS CAROUSEL FUNCTIONALITY WITH AUTO-PLAY
+     ============================================================ -->
+<script>
+(function() {
+  const track = document.getElementById('projectsCarouselTrack');
+  const slides = document.querySelectorAll('.projects-carousel-slide');
+  const dots = document.querySelectorAll('.projects-carousel-dot');
+  const prevBtn = document.getElementById('projectsCarouselPrev');
+  const nextBtn = document.getElementById('projectsCarouselNext');
+
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  let autoPlayInterval = null;
+  const AUTO_PLAY_DELAY = 3000; // 3 seconds
+
+  function getSlidesToShow() {
+    const width = window.innerWidth;
+    if (width >= 1025) return 3;
+    if (width >= 769) return 2;
+    return 1;
+  }
+
+  function updateCarousel() {
+    const slidesToShow = getSlidesToShow();
+    const maxSlide = Math.max(0, totalSlides - slidesToShow);
+    currentSlide = Math.min(currentSlide, maxSlide);
+
+    // Calculate translation - move by full slide width
+    const slideWidth = slides[0].offsetWidth;
+    const gap = 32; // 2rem gap
+    const moveDistance = currentSlide * (slideWidth + gap);
+
+    track.style.transform = `translateX(-${moveDistance}px)`;
+
+    // Update dots
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentSlide);
+    });
+
+    // Update button states
+    prevBtn.disabled = currentSlide === 0;
+    nextBtn.disabled = currentSlide >= maxSlide;
+  }
+
+  function goToSlide(n) {
+    const slidesToShow = getSlidesToShow();
+    const maxSlide = Math.max(0, totalSlides - slidesToShow);
+    currentSlide = Math.max(0, Math.min(n, maxSlide));
+    updateCarousel();
+    // Reset auto-play when user manually navigates
+    resetAutoPlay();
+  }
+
+  function nextSlide() {
+    const slidesToShow = getSlidesToShow();
+    const maxSlide = Math.max(0, totalSlides - slidesToShow);
+    if (currentSlide < maxSlide) {
+      goToSlide(currentSlide + 1);
+    } else {
+      // Loop back to beginning
+      goToSlide(0);
+    }
+  }
+
+  function prevSlide() {
+    if (currentSlide > 0) {
+      goToSlide(currentSlide - 1);
+    } else {
+      // Loop to end
+      const slidesToShow = getSlidesToShow();
+      const maxSlide = Math.max(0, totalSlides - slidesToShow);
+      goToSlide(maxSlide);
+    }
+  }
+
+  function startAutoPlay() {
+    if (autoPlayInterval) clearInterval(autoPlayInterval);
+    autoPlayInterval = setInterval(() => {
+      const slidesToShow = getSlidesToShow();
+      const maxSlide = Math.max(0, totalSlides - slidesToShow);
+      if (currentSlide < maxSlide) {
+        currentSlide++;
+      } else {
+        currentSlide = 0;
+      }
+      updateCarousel();
+    }, AUTO_PLAY_DELAY);
+  }
+
+  function resetAutoPlay() {
+    if (autoPlayInterval) clearInterval(autoPlayInterval);
+    startAutoPlay();
+  }
+
+  // Event listeners
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', (e) => {
+      const slideIndex = parseInt(e.target.dataset.slide, 10);
+      goToSlide(slideIndex);
+    });
+  });
+
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      currentSlide = 0;
+      updateCarousel();
+      resetAutoPlay();
+    }, 250);
+  });
+
+  // Initialize after DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        updateCarousel();
+        startAutoPlay();
+      }, 100);
+    });
+  } else {
+    setTimeout(() => {
+      updateCarousel();
+      startAutoPlay();
+    }, 100);
+  }
+
+  // Update on image load
+  window.addEventListener('load', () => {
+    updateCarousel();
+    resetAutoPlay();
+  });
+})();
+</script>
+
 
 <!-- ============================================================
      three.js is already included in the global head for the site.
