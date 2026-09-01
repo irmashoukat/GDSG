@@ -28,6 +28,8 @@ function asset_url($path)
 {
     $config = require __DIR__ . '/config.php';
     $normalizedPath = ltrim($path, '/');
+    $encodedSegments = array_map('rawurlencode', explode('/', $normalizedPath));
+    $normalizedPath = implode('/', $encodedSegments);
 
     if (!empty($config['base_url'])) {
         return rtrim($config['base_url'], '/') . '/' . $normalizedPath;
