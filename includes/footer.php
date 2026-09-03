@@ -3,8 +3,19 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-column">
-                <h5>GDSG</h5>
-                <p>Advancing spatial science through computational rigor, remote sensing, and responsible AI.</p>
+                <div class="footer-brand-lockup">
+                    <img src="<?php echo asset_url('assets/images/gdsg-globe-mark.png'); ?>" alt="GDSG logo">
+                    <div>
+                        <h5>GDSG</h5>
+                        <p class="footer-full-name">Geospatial Data<br>Science Group</p>
+                    </div>
+                </div>
+                <p>Advancing the frontier of geospatial data science through rigorous methodology and innovative AI application.</p>
+                <div class="footer-social-links">
+                    <a href="https://www.linkedin.com/company/geospatial-data-science-group/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">in</a>
+                    <a href="https://www.facebook.com/profile.php?viewas=100000686899395&amp;id=61567873319375" target="_blank" rel="noopener noreferrer" aria-label="Facebook">f</a>
+                    <a href="mailto:info@gdsg.org" aria-label="Email">@</a>
+                </div>
             </div>
             <div class="footer-column">
                 <h6>Explore</h6>
@@ -24,16 +35,19 @@
                 </ul>
             </div>
             <div class="footer-column">
-                <h6>Contact</h6>
-                <p class="mb-1"><a href="https://www.linkedin.com/company/geospatial-data-science-group/about/?viewAsMember=true" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
-                <p class="mb-0"><a href="https://www.facebook.com/profile.php?viewas=100000686899395&amp;id=61567873319375" target="_blank" rel="noopener noreferrer">Facebook</a></p>
-                <p class="mb-1">Email: <a href="mailto:info@gdsg.org">info@gdsg.org</a></p>
-                <p class="mb-1">Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-                <p class="mb-0">Office hours: Mon - Fri, 9:00 AM - 6:00 PM</p>
+                <h6>Contact Us</h6>
+                <p class="mb-1 footer-contact-line"><span class="footer-contact-icon">mail</span><a href="mailto:info@gdsg.org">info@gdsg.org</a></p>
+                <p class="mb-1 footer-contact-line"><span class="footer-contact-icon">call</span><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+                <p class="mb-1 footer-contact-line"><span class="footer-contact-icon">schedule</span>Mon - Fri, 9:00 AM - 6:00 PM</p>
+                <p class="mb-0 footer-contact-line"><span class="footer-contact-icon">location_on</span><span>125 Geo Way, Suite 100<br>Denver, CO 80202, USA</span></p>
             </div>
         </div>
         <div class="footer-bottom">
             <small>&copy; <?php echo date('Y'); ?> Geospatial Data Science Group. All rights reserved.</small>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+            </div>
         </div>
     </div>
 </footer>
