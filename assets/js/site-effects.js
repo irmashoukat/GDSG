@@ -28,7 +28,7 @@
      2) Scroll-triggered reveals (.reveal, with .stagger groups)
      --------------------------------------------------------- */
   (function reveals() {
-    var splitHeadings = document.querySelectorAll('body.site-shell main h1:not(.publications-title), body.site-shell main h2, body.site-shell main h3');
+    var splitHeadings = document.querySelectorAll('body.site-shell:not(.about-reference) main h1:not(.publications-title):not(.no-split), body.site-shell:not(.about-reference) main h2:not(.no-split), body.site-shell:not(.about-reference) main h3:not(.no-split)');
     splitHeadings.forEach(function (heading) {
       if (heading.dataset.splitReady === 'true') return;
 

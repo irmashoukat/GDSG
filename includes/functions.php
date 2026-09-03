@@ -66,6 +66,7 @@ function get_technology_description($tech_name)
         'Cloud Computing' => 'Scalable cloud infrastructure for processing large geospatial datasets and running intensive AI/ML models.',
         'GTFS' => 'General Transit Feed Specification format for standardizing and sharing public transportation data.',
         'Transit Data' => 'Structured information about transportation routes, schedules, and stations for journey planning systems.',
+        'Web Service' => 'RESTful and web-based APIs providing accessible geospatial and service data to applications.',
         'Web Services' => 'RESTful and web-based APIs providing accessible geospatial and service data to applications.',
         'Environmental Intelligence' => 'Integration of environmental data, monitoring systems, and analytics for informed decision-making.',
         'Forecasting' => 'Predictive modeling techniques for anticipating environmental, agricultural, or urban conditions.',
@@ -76,6 +77,7 @@ function get_technology_description($tech_name)
         'BOINC' => 'Berkeley Open Infrastructure for Network Computing enabling distributed processing across multiple computers.',
         'Suitability Analysis' => 'Multi-criteria evaluation to identify optimal locations for agricultural, environmental, or development activities.',
         'Agricultural Knowledge' => 'Structured information on crops, farming practices, climate requirements, and agricultural best practices.',
+        '+1' => 'Includes distributed pipelines, API integrations, and specialized spatial engineering techniques.',
         'Geofencing' => 'Location-based technology triggering actions when users or assets enter or exit defined geographic areas.',
         'Mobile Technology' => 'Applications and services deployed on mobile devices for field operations and real-time data collection.',
         'Agricultural Systems' => 'Comprehensive technology platforms supporting farming operations, extension services, and field management.',
@@ -104,5 +106,13 @@ function get_technology_description($tech_name)
     ];
 
     $trimmed_name = trim($tech_name);
-    return $descriptions[$trimmed_name] ?? '';
+    if (isset($descriptions[$trimmed_name])) {
+        return $descriptions[$trimmed_name];
+    }
+    foreach ($descriptions as $k => $d) {
+        if (strcasecmp($k, $trimmed_name) === 0) {
+            return $d;
+        }
+    }
+    return 'Specialized geospatial technique applied to enhance analytical precision and operational scalability.';
 }
