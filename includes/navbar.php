@@ -18,6 +18,7 @@ $currentPath = basename($_SERVER['SCRIPT_NAME']);
                 <li class="nav-item"><a class="nav-link<?php echo $currentPath === 'projects.php' ? ' active' : ''; ?>" href="projects.php">Projects</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $currentPath === 'publications.php' ? ' active' : ''; ?>" href="publications.php">Publications</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $currentPath === 'team.php' ? ' active' : ''; ?>" href="team.php">Team</a></li>
+                <li class="nav-item"><a class="nav-link<?php echo ($currentPath === 'blogs.php' || $currentPath === 'blog_detail.php') ? ' active' : ''; ?>" href="blogs.php">Blogs</a></li>
                 <li class="nav-item"><a class="nav-link<?php echo $currentPath === 'news.php' ? ' active' : ''; ?>" href="news.php">News</a></li>
             </ul>
             <a class="btn navbar-contact d-none d-lg-inline-flex" href="contact.php">Contact</a>
